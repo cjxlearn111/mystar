@@ -1,0 +1,27 @@
+<article class="article-shell container-reading">
+  <a class="back-link" href="/archives/">返回文章列表</a>
+
+  <header class="article-header">
+    <div class="article-meta">
+      <time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY年MM月DD日') %></time>
+      <% if (page.reading_time) { %>
+        <span class="meta-separator">•</span>
+        <span><%= page.reading_time %></span>
+      <% } %>
+    </div>
+    <h1 class="article-title"><%= page.title %></h1>
+    <% if (page.description) { %>
+      <p class="article-description"><%= page.description %></p>
+    <% } %>
+  </header>
+
+  <% if (page.cover) { %>
+    <figure class="article-cover">
+      <img src="<%= url_for(page.cover) %>" alt="<%= page.title %>">
+    </figure>
+  <% } %>
+
+  <div class="article-prose">
+    <%- page.content %>
+  </div>
+</article>

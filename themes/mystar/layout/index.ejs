@@ -1,0 +1,32 @@
+<% const homeConfig = theme.home || {}; %>
+<% const latest = homeConfig.latest || {}; %>
+<% const quoteBanner = homeConfig.quote_banner || {}; %>
+
+<section class="home-shell">
+  <%- partial('partial/hero') %>
+
+  <section class="post-stream container-shell">
+    <div class="section-head">
+      <div>
+        <p class="section-label"><%= latest.label || 'Latest Notes' %></p>
+        <h2 class="section-title"><%= latest.title || '最新文章' %></h2>
+      </div>
+      <a class="ghost-link" href="<%= url_for(latest.link || '/archives/') %>"><%= latest.link_text || '查看归档' %></a>
+    </div>
+
+    <div class="post-list">
+      <% page.posts.each(function(post){ %>
+        <%- partial('partial/post-card', { post: post }) %>
+      <% }) %>
+    </div>
+  </section>
+
+  <section class="quote-banner container-shell">
+    <div class="quote-banner-media">
+      <img src="<%= url_for(quoteBanner.image || '/images/site/9d81f4c2fbb696df787c56dd11c38b14.jpg') %>" alt="<%= quoteBanner.image_alt || 'Snow mountain landscape' %>" loading="lazy">
+      <div class="quote-banner-overlay">
+        <p class="quote-banner-text">“<%= quoteBanner.text || 'A quieter surface gives thoughtful work more room to breathe.' %>”</p>
+      </div>
+    </div>
+  </section>
+</section>

@@ -1,0 +1,42 @@
+{
+  "name": "mystar",
+  "version": "1.0.0",
+  "description": "mystar personal blog and knowledge base powered by Hexo",
+  "private": true,
+  "scripts": {
+    "clean": "hexo clean",
+    "dev": "hexo server",
+    "build": "hexo generate",
+    "deploy": "hexo deploy",
+    "new:post": "hexo new post",
+    "new:page": "hexo new page",
+    "new:draft": "hexo new draft",
+    "publish:post": "hexo publish post"
+  },
+  "keywords": [
+    "hexo",
+    "blog",
+    "knowledge-base"
+  ],
+  "author": "mystar",
+  "license": "MIT",
+  "hexo": {
+    "version": "7.3.0"
+  },
+  "dependencies": {
+    "hexo": "^7.3.0",
+    "hexo-cli": "^4.3.2",
+    "hexo-deployer-git": "^4.0.0",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-searchdb": "^1.5.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-pagination": "^4.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.1",
+    "hexo-renderer-stylus": "^3.0.1",
+    "hexo-server": "^3.0.0",
+    "hexo-wordcount": "^6.0.1"
+  }
+}

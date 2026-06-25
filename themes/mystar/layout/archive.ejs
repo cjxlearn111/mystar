@@ -1,0 +1,13 @@
+<section class="archive-shell container-reading">
+  <header class="page-header">
+    <p class="section-label">Archive</p>
+    <h1 class="page-title">全部文章</h1>
+  </header>
+
+  <div class="post-list">
+    <% page.posts.each(function(post){ %>
+      <%- partial('partial/post-card', { post: post }) %>
+    <% }) %>
+  </div>
+</section>
+

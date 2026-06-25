@@ -1,0 +1,30 @@
+<% const hero = theme.home && theme.home.hero ? theme.home.hero : {}; %>
+
+<section class="hero container-shell">
+  <div class="hero-copy">
+    <p class="section-label"><%= hero.label || 'Editorial Notes' %></p>
+    <h1 class="hero-title">
+      <%= hero.title || 'Building a quiet, curated home for thoughtful work.' %>
+    </h1>
+    <p class="hero-description">
+      <%= hero.description || '一个面向设计、系统与知识沉淀的个人博客与内容档案。这里会逐步承载文章、实验与长期思考。' %>
+    </p>
+    <div class="hero-actions">
+      <a class="primary-button" href="<%= url_for(hero.cta_link || '/archives/') %>"><%= hero.cta_text || '阅读文章' %></a>
+    </div>
+    <div class="hero-notes">
+      <p class="hero-note hero-note-primary"><%= theme.brand && theme.brand.description ? theme.brand.description : '关于设计、系统与长文阅读体验的个人知识档案。' %></p>
+      <p class="hero-note">Issue <%= theme.brand && theme.brand.issue ? theme.brand.issue : 'No.1' %></p>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-image">
+      <img src="<%= url_for(hero.image || '/images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg') %>" alt="<%= hero.image_alt || 'Homepage hero landscape' %>" loading="eager">
+    </div>
+    <div class="floating-card">
+      <p class="floating-label"><%= hero.card_label || 'In Progress' %></p>
+      <h3><%= hero.card_title || 'mystar theme system' %></h3>
+      <p><%= hero.card_description || '基于我们已整理的设计系统持续打磨。' %></p>
+    </div>
+  </div>
+</section>

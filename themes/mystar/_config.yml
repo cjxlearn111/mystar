@@ -1,0 +1,31 @@
+menu:
+  Home: /
+  Archive: /archives/
+  About: /about/
+
+brand:
+  name: mystar
+  issue: Essence No.1
+  description: 关于设计、系统与长文阅读体验的个人知识档案。
+
+home:
+  hero:
+    label: Editorial Notes
+    title: Building a quiet, curated home for thoughtful work.
+    description: 一个面向设计、系统与知识沉淀的个人博客与内容档案。这里会逐步承载文章、实验与长期思考。
+    cta_text: 阅读文章
+    cta_link: /archives/
+    image: /images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg
+    image_alt: Homepage hero landscape
+    card_label: In Progress
+    card_title: mystar theme system
+    card_description: 基于我们已整理的设计系统持续打磨。
+  latest:
+    label: Latest Notes
+    title: 最新文章
+    link_text: 查看归档
+    link: /archives/
+  quote_banner:
+    text: A quieter surface gives thoughtful work more room to breathe.
+    image: /images/site/9d81f4c2fbb696df787c56dd11c38b14.jpg
+    image_alt: Snow mountain landscape

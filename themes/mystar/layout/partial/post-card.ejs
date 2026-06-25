@@ -1,0 +1,19 @@
+<article class="post-card">
+  <div class="post-card-date">
+    <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY年MM月DD日') %></time>
+  </div>
+  <div class="post-card-main">
+    <% if (post.categories && post.categories.length) { %>
+      <p class="post-card-tag"><%= post.categories.data[0].name %></p>
+    <% } %>
+    <h3 class="post-card-title">
+      <a href="<%= url_for(post.path) %>"><%= post.title %></a>
+    </h3>
+    <% if (post.description || post.excerpt) { %>
+      <p class="post-card-excerpt">
+        <%= post.description || post.excerpt %>
+      </p>
+    <% } %>
+  </div>
+</article>
+
