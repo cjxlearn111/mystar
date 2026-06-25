@@ -19,7 +19,7 @@
   </div>
   <div class="hero-visual">
     <div class="hero-image">
-      <img src="<%= url_for(hero.image || '/images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg') %>" alt="<%= hero.image_alt || 'Homepage hero landscape' %>" loading="eager">
+      <img src="<%= url_for(hero.image || '/images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg') %>" alt="<%= hero.image_alt || 'Homepage hero landscape' %>" loading="eager" fetchpriority="high" decoding="async" width="1600" height="1600">
     </div>
     <div class="floating-card">
       <p class="floating-label"><%= hero.card_label || 'In Progress' %></p>

@@ -23,7 +23,7 @@
 
   <section class="quote-banner container-shell">
     <div class="quote-banner-media">
-      <img src="<%= url_for(quoteBanner.image || '/images/site/9d81f4c2fbb696df787c56dd11c38b14.jpg') %>" alt="<%= quoteBanner.image_alt || 'Snow mountain landscape' %>" loading="lazy">
+      <img src="<%= url_for(quoteBanner.image || '/images/site/9d81f4c2fbb696df787c56dd11c38b14.jpg') %>" alt="<%= quoteBanner.image_alt || 'Snow mountain landscape' %>" loading="lazy" decoding="async" width="900" height="1600">
       <div class="quote-banner-overlay">
         <p class="quote-banner-text">“<%= quoteBanner.text || 'A quieter surface gives thoughtful work more room to breathe.' %>”</p>
       </div>
