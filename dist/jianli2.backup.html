@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈嘉希 - 产品体验设计实习生简历</title>
+    <style>
+        /* ================= 基础重置与全局样式 ================= */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        :root {
+            --primary: #5c7e8e; /* 主色调：青灰色 */
+            --accent: #bda27e;  /* 强调色：香槟金 */
+            --bg-light: #e5eaec; /* 浅灰底色 */
+            --text-main: #333333; /* 主文本颜色 */
+            --text-light: #666666; /* 次要文本颜色 */
+            --font-stack: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: #f0f2f5; 
+            font-size: 14px;
+        }
+
+        /* ================= 简历主容器 ================= */
+        .container {
+            width: 820px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 50px 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            min-height: 1160px; 
+        }
+
+        /* ================= 极简头部信息区 ================= */
+        .minimal-header {
+            text-align: center;
+            position: relative;
+            margin-bottom: 35px;
+            padding-top: 10px;
+        }
+
+        .minimal-name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 12px;
+            letter-spacing: 4px;
+        }
+
+        .minimal-contact {
+            display: flex;
+            flex-direction: column; /* 改为纵向排列，分行展示 */
+            align-items: center;
+            gap: 8px; /* 两行之间的间距 */
+            font-size: 14px;
+            color: #333;
+        }
+
+        .contact-row {
+            display: flex;
+            justify-content: center;
+            gap: 28px; /* 同一行内不同元素的间距 */
+        }
+
+        .minimal-contact span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .minimal-contact svg {
+            width: 16px;
+            height: 16px;
+            fill: #444; /* 图标颜色 */
+        }
+
+        .minimal-contact a {
+            color: #0078d4; /* 契合参考图的超链接颜色 */
+            text-decoration: none;
+        }
+        
+        .minimal-contact a:hover {
+            text-decoration: underline;
+        }
+
+        .minimal-photo {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 90px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* ================= 内容区与左侧脊骨线 ================= */
+        .content-area {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .spine {
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--primary);
+            z-index: 2;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin: 0 0 15px -30px;
+            position: relative;
+            z-index: 3;
+            page-break-after: avoid;
+        }
+
+        .section-title {
+            background-color: var(--primary);
+            color: white;
+            padding: 4px 18px 4px 28px;
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            clip-path: polygon(0 50%, 12px 0, 100% 0, 100% 100%, 12px 100%);
+            white-space: nowrap;
+        }
+
+        .section-line {
+            flex-grow: 1;
+            height: 1px;
+            background-color: var(--primary);
+        }
+
+        /* ================= 经历与描述规范 ================= */
+        .content-block {
+            margin-left: 20px;
+            margin-bottom: 22px;
+            page-break-inside: avoid; 
+        }
+
+        .row-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .award-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            font-size: 13.5px;
+            color: var(--text-main);
+        }
+
+        .role-text {
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        .date-text {
+            font-weight: normal;
+            color: var(--text-main);
+            font-size: 13px;
+        }
+
+        .project-links {
+            font-size: 13.5px;
+            color: var(--text-main);
+            margin-top: 2px;
+            margin-bottom: 6px;
+        }
+        
+        .project-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            margin: 0 2px;
+        }
+
+        /* 教育背景对齐 Grid */
+        .edu-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 2fr 2.5fr;
+            align-items: baseline;
+            font-weight: bold;
+            color: var(--text-main);
+            margin-bottom: 10px;
+        }
+        .edu-grid > span:nth-child(1) { text-align: left; }
+        .edu-grid > span:nth-child(2) { text-align: center; }
+        .edu-grid > span:nth-child(3) { text-align: center; font-weight: normal; }
+        .edu-grid > span:nth-child(4) { text-align: right; }
+
+        .desc-text {
+            font-size: 13.5px;
+            color: var(--text-main);
+            line-height: 1.75;
+            text-align: justify;
+        }
+
+        ul.bullet-list {
+            padding-left: 0;
+            list-style: none;
+            margin-top: 6px;
+        }
+
+        ul.bullet-list li {
+            position: relative;
+            padding-left: 16px;
+            margin-bottom: 8px;
+            text-align: justify;
+            font-size: 13.5px;
+        }
+
+        ul.bullet-list li::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 5px;
+            height: 5px;
+            background-color: var(--primary);
+            border-radius: 50%;
+        }
+
+        ul.bullet-list li strong {
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        /* ================= 打印设置 ================= */
+        @media print {
+            body { background-color: #ffffff; }
+            .container {
+                margin: 0;
+                padding: 40px 50px;
+                box-shadow: none;
+                width: 100%;
+            }
+            .spine { height: 100%; } 
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <!-- ================= 极简头部 ================= -->
+    <header class="minimal-header">
+        <h1 class="minimal-name">陈嘉希</h1>
+        <div class="minimal-contact">
+            <!-- 第一行：电话与邮箱 -->
+            <div class="contact-row">
+                <!-- 电话图标 -->
+                <span>
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    17320536503
+                </span>
+                <!-- 邮箱图标 -->
+                <span>
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    1621115862@qq.com
+                </span>
+            </div>
+            <!-- 第二行：作品集长链接 -->
+            <div class="contact-row">
+                <!-- 链接图标(小房子) -->
+                <span>
+                    <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                    <a href="https://book.yunzhan365.com/dnifj/nwvm/mobile/index.html" target="_blank">作品集：https://book.yunzhan365.com/dnifj/nwvm/mobile/index.html</a>
+                </span>
+            </div>
+        </div>
+
+
+    </header>
+
+    <!-- ================= 核心内容区 ================= -->
+    <div class="content-area">
+        <div class="spine"></div>
+
+        <!-- =========== 教育背景 =========== -->
+        <div class="section-header">
+            <div class="section-title">教育背景</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="content-block">
+            <div class="edu-grid">
+                <span>湖北美术学院</span>
+                <span>本科</span>
+                <span>2020.09 - 2024.07</span>
+                <span>影视动画学院（游戏互动方向）</span>
+            </div>
+            <div class="edu-grid">
+                <span>武汉理工大学</span>
+                <span>硕士</span>
+                <span>2025.09 - 2028.07</span>
+                <span>艺术与设计学院（新媒体艺术方向）</span>
+            </div>
+            <div class="desc-text" style="margin-top: 4px;">
+                <strong>主修课程：</strong>用户体验与可用性设计，人工智能艺术，游戏策划，AIGC艺术设计，虚拟漫游与交互，三维模型与制作，空间设计基础，美学原理
+            </div>
+        </div>
+
+        <!-- =========== 获奖情况 =========== -->
+        <div class="section-header">
+            <div class="section-title">获奖情况</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="content-block">
+            <div class="award-row">
+                <span>第十一届“理工合伙人”研究生创业挑战赛三等奖</span>
+                <span class="date-text">2025.10</span>
+            </div>
+            <div class="award-row">
+                <span>未来制作人大奖赛“最佳人气奖”</span>
+                <span class="date-text">2024.5</span>
+            </div>
+            <div class="award-row">
+                <span>《基于苗族传说“蝴蝶妈妈”的动力学首饰设计》于《优享生活》杂志发表</span>
+                <span class="date-text">2024.1</span>
+            </div>
+        </div>
+
+        <!-- =========== 实习经历 =========== -->
+        <div class="section-header">
+            <div class="section-title">实习经历</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="content-block">
+            <div class="row-flex">
+                <span>珞珈实验室（湖北）元梦 3D 元宇宙平台</span>
+                <span class="date-text">2025.08 - 2025.12</span>
+                <span class="role-text">产品策划 / UIUX设计实习生</span>
+            </div>
+            <ul class="bullet-list">
+                <li><strong>交互流程优化：</strong>参与“手机拍照一键生成 3D 模型”功能迭代。提出 3 项交互简化方案，缩减操作步骤 20%，提升新手模型生成成功率。</li>
+                <li><strong>竞品数据分析：</strong>深度拆解相关 3D 建模竞品，输出功能对比评估报告，为产品迭代方向提供数据支持。</li>
+                <li><strong>美术资产规范：</strong>负责产品迭代期的美术资产把控，统一 UI 视觉风格，确保视觉元素符合平台设计规范。</li>
+            </ul>
+        </div>
+
+        <!-- =========== 项目经历 (B版: 游戏优先) =========== -->
+        <div class="section-header">
+            <div class="section-title">项目经历</div>
+            <div class="section-line"></div>
+        </div>
+
+        <!-- 项目1：汪汪特工队 (放在首位，强调游戏策划经验) -->
+        <div class="content-block">
+            <div class="row-flex">
+                <span>《汪汪特工队》养成类游戏（获奖项目）</span>
+                <span class="date-text">2024.01 - 2024.06</span>
+                <span class="role-text">项目负责人 / 主策划</span>
+            </div>
+            <div class="project-links">
+                <a href="https://share.weiyun.com/sV2LvcUk?weiyun_qr_code=1" target="_blank">演示视频：https://share.weiyun.com/sV2LvcUk?weiyun_qr_code=1</a>
+            </div>
+            <div class="desc-text">
+                <ul class="bullet-list" style="margin-top: 0;">
+                    <li><strong>项目介绍：</strong>一款融合“警犬题材”与“休闲养成”玩法的创新养成类游戏。</li>
+                    <li>主导产品从 0 到 1 的研发周期，撰写完整系统设计文档与核心数值规划。统筹管理 8 人跨专业团队（程序、美术、策划），确保开发排期精准推进。</li>
+                    <li>把控游戏美术风格与核心资源制作。参与引擎部署环节，统一整体视觉规范。</li>
+                    <li>完成最终 Demo 的交付与验收，成功斩获未来制作人大奖赛（武汉站）“最佳人气奖”。</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- 项目2：3D相册 (强调视觉规范与技术落地) -->
+        <div class="content-block">
+            <div class="row-flex">
+                <span>轻量化 3D 立体相册应用（0-1 独立开发）</span>
+                <span class="date-text">2025.03 - 至今</span>
+                <span class="role-text">产品负责人 / UIUX设计</span>
+            </div>
+            <div class="project-links">
+                <a href="https://my.feishu.cn/wiki/T9xvwEvSzizjm9ksYlwcKvvNn9g" target="_blank">产品实机演示：https://my.feishu.cn/wiki/T9xvwEvSzizjm9ksYlwcKvvNn9g</a>
+            </div>
+            <div class="desc-text">
+                <ul class="bullet-list" style="margin-top: 0;">
+                    <li><strong>项目介绍：</strong>一款打破传统 2D 空间局限，主打移动端流畅浏览的 3D 互动相册。</li>
+                    <li>确⽴以 3DGS 技术为核⼼驱动。利⽤ AI 前端技术栈独⽴完成⻚面搭建与 UI 逻辑编写，进⾏产品原型验证到前端交互实现的全流程</li>
+                    <li>制定视觉交互规范，引⼊设计令牌（Design Tokens）与标准化组件（Components）确保视觉⼀致性。</li>
+                    <li>打通从痛点洞察、UI/UX 设计到前端代码落地的全链路，实现产品从概念到可交付演示版本的转化。</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- =========== 专业技能 =========== -->
+        <div class="section-header">
+            <div class="section-title">专业技能</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="content-block desc-text">
+            <ul class="bullet-list" style="margin-top: 0;">
+                <li><strong>产品原型设计：</strong>熟练使用 Figma、Axure 输出高保真原型，具备系统设计文档撰写与核心数值规划能力。</li>
+                <li><strong>美术视觉设计：</strong>熟练使用 Photoshop、Illustrator、Blender 等工具进行 UI 视觉设计与 3D 资产制作。</li>
+                <li><strong>前端技术：</strong>熟悉 HTML/CSS/JavaScript，掌握AI 辅助编程代码落地。</li>
+            </ul>
+        </div>
+
+        <!-- =========== 游戏经历 =========== -->
+        <div class="section-header">
+            <div class="section-title">游戏经历</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="content-block desc-text">
+            <ul class="bullet-list" style="margin-top: 0;">
+                <li><strong>主流品类体验：</strong>长线重度游玩《原神》《崩坏：星穹铁道》《第五人格》等热门产品，熟悉二次元RPG与非对称竞技类游戏的核心玩法。</li>
+                <li><strong>MOBA 竞技：</strong>资深《英雄联盟》玩家，最高段位达到超凡大师，具备丰富的硬核实战经验。</li>
+            </ul>
+        </div>
+
+        <!-- =========== 校园经历 =========== -->
+        <div class="section-header">
+            <div class="section-title">校园经历</div>
+            <div class="section-line"></div>
+        </div>
+        <div class="content-block">
+            <div class="row-flex">
+                <span>艺奇游研社社长 | 湖北美术学院</span>
+                <span class="date-text">2022.02 - 2023.03</span>
+            </div>
+            <ul class="bullet-list">
+                <li><strong>跨校活动策划：</strong>联合武汉大学、华中科技大学等 4 所高校社团，举办“融艺”跨学科交流会及校内首届 Game Jam 比赛（超 300 人参与）。</li>
+                <li><strong>社团运营：</strong>优化社团分工与招新流程。任职期间社团核心成员规模增长 50%，共举办 3 场百人级社团活动。</li>
+            </ul>
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>

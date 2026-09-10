@@ -23,7 +23,8 @@ archive_dir: archives
 category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
-skip_render: []
+skip_render:
+  - index.html
 
 new_post_name: :title.md
 default_layout: post
@@ -43,7 +44,7 @@ prismjs:
   enable: false
 
 index_generator:
-  path: ""
+  path: home
   per_page: 10
   order_by: -date
 

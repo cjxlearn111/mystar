@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+<!--
+  mystar 静态页面快照 · 关于页
+  由 tools/export-single-html.js 生成：CSS 与图片已全部内联，可直接双击打开。
+  源文件对应 public/ 下的同名页面，改动请回到 Hexo 工程，不要直接编辑本文件。
+-->
+
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About | mystar</title>
+<meta name="description" content="A minimalist personal blog and knowledge base built with Hexo.">
+<style>
 :root {
   --bg-page: #faf8fe;
   --bg-surface: #ffffff;
@@ -40,131 +54,6 @@ body {
   color: var(--text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
-}
-
-.site-shell {
-  min-height: 100vh;
-}
-
-.profile-sidebar {
-  position: fixed;
-  inset: 0 auto 0 0;
-  z-index: 30;
-  width: 292px;
-  background: var(--bg-surface);
-  border-right: 1px solid var(--border-soft);
-}
-
-.profile-sidebar-inner {
-  display: flex;
-  flex-direction: column;
-  min-height: 100%;
-  padding: 34px 30px 24px;
-}
-
-.profile-identity {
-  padding-bottom: 30px;
-}
-
-.profile-avatar {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: var(--bg-surface-muted);
-}
-
-.profile-avatar-placeholder {
-  display: grid;
-  place-items: center;
-  color: var(--text-primary);
-  font-family: var(--font-display);
-  font-size: 24px;
-  letter-spacing: 0.06em;
-  border: 1px solid var(--border-soft);
-}
-
-.profile-name {
-  margin: 20px 0 6px;
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 600;
-}
-
-.profile-role {
-  margin: 0;
-  color: var(--text-muted);
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.profile-navigation {
-  display: grid;
-  gap: 4px;
-}
-
-.profile-nav-link {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  padding: 11px 12px;
-  border-radius: 8px;
-  color: var(--text-secondary);
-  font-size: 14px;
-  transition: background-color 180ms ease, color 180ms ease;
-}
-
-.profile-nav-link:hover,
-.profile-nav-link:focus-visible,
-.profile-nav-link.is-active {
-  background: var(--bg-surface-muted);
-  color: var(--text-primary);
-}
-
-.profile-nav-index {
-  min-width: 20px;
-  color: var(--text-muted);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
-.profile-contact {
-  display: grid;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-soft);
-}
-
-.profile-contact a {
-  display: grid;
-  gap: 2px;
-  color: var(--text-secondary);
-  font-size: 12px;
-  overflow-wrap: anywhere;
-}
-
-.profile-contact-label {
-  color: var(--text-muted);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.profile-copyright {
-  margin: 22px 0 0;
-  color: var(--text-muted);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-}
-
-.site-content {
-  min-width: 0;
-  margin-left: 292px;
 }
 
 a {
@@ -245,10 +134,6 @@ img {
   color: var(--text-secondary);
 }
 
-.header-inner .brand-issue {
-  margin-right: auto;
-}
-
 .site-nav a {
   transition: color 180ms ease, opacity 180ms ease;
 }
@@ -273,20 +158,11 @@ img {
   max-width: 40rem;
 }
 
-.hero-copy .section-label {
-  margin-bottom: 18px;
-}
-
 .hero-title {
-  font-size: clamp(80px, 6.3vw, 88px);
-  line-height: 1.06;
+  font-size: clamp(42px, 7vw, 72px);
+  line-height: 1.08;
   font-weight: 600;
   margin: 0 0 24px;
-}
-
-.hero-intent-title {
-  font-size: 28px;
-  line-height: 1.3;
 }
 
 .hero-description,
@@ -399,84 +275,6 @@ img {
 
 .post-stream {
   position: relative;
-}
-
-.resume-sections {
-  padding-top: 72px;
-}
-
-.resume-section {
-  scroll-margin-top: 32px;
-  padding: 56px 0;
-  border-top: 1px solid var(--border-soft);
-}
-
-.resume-section-head {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 32px;
-}
-
-.resume-section-head .section-label {
-  margin-bottom: 10px;
-}
-
-.resume-items {
-  display: grid;
-  gap: 28px;
-}
-
-.resume-item {
-  padding-top: 24px;
-  border-top: 1px solid var(--border-soft);
-}
-
-.resume-item-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-}
-
-.resume-item h3 {
-  margin: 0;
-  font-size: 19px;
-  line-height: 1.45;
-  font-weight: 600;
-}
-
-.resume-item-subtitle,
-.resume-item time {
-  color: var(--text-muted);
-  font-size: 13px;
-}
-
-.resume-item-subtitle {
-  margin: 8px 0 0;
-}
-
-.resume-item time {
-  flex: 0 0 auto;
-  padding-top: 3px;
-  white-space: nowrap;
-}
-
-.resume-item-link {
-  display: inline-block;
-  margin-top: 14px;
-  color: var(--text-secondary);
-  font-size: 13px;
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-
-.resume-item-details {
-  display: grid;
-  gap: 10px;
-  margin: 16px 0 0;
-  padding-left: 20px;
-  color: var(--text-secondary);
-  font-size: 15px;
-  line-height: 1.75;
 }
 
 .about-shell {
@@ -860,64 +658,6 @@ img {
 }
 
 @media (max-width: 900px) {
-  .profile-sidebar {
-    position: static;
-    width: auto;
-    border-right: 0;
-    border-bottom: 1px solid var(--border-soft);
-  }
-
-  .profile-sidebar-inner {
-    min-height: auto;
-    padding: 24px 20px 18px;
-  }
-
-  .profile-identity {
-    display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    column-gap: 16px;
-    align-items: center;
-    padding-bottom: 20px;
-  }
-
-  .profile-avatar {
-    grid-row: span 2;
-    width: 64px;
-    height: 64px;
-  }
-
-  .profile-name {
-    margin: 0 0 4px;
-    font-size: 24px;
-  }
-
-  .profile-navigation {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    padding-bottom: 2px;
-  }
-
-  .profile-nav-link {
-    flex: 0 0 auto;
-    padding: 8px 10px;
-    white-space: nowrap;
-    font-size: 13px;
-  }
-
-  .profile-nav-index {
-    display: none;
-  }
-
-  .profile-contact,
-  .profile-copyright {
-    display: none;
-  }
-
-  .site-content {
-    margin-left: 0;
-  }
-
   .header-inner {
     min-height: auto;
     padding: 20px 0 18px;
@@ -944,14 +684,6 @@ img {
   .post-card {
     grid-template-columns: 1fr;
     gap: 14px;
-  }
-
-  .resume-sections {
-    padding-top: 48px;
-  }
-
-  .resume-section {
-    padding: 40px 0;
   }
 
   .section-head,
@@ -1028,10 +760,6 @@ img {
     font-size: clamp(34px, 13vw, 52px);
   }
 
-  .hero-intent-title {
-    font-size: 28px;
-  }
-
   .hero-description {
     margin-bottom: 24px;
     font-size: 16px;
@@ -1080,19 +808,6 @@ img {
     font-size: 24px;
   }
 
-  .resume-item-head {
-    display: block;
-  }
-
-  .resume-item time {
-    display: block;
-    margin-top: 8px;
-  }
-
-  .resume-item-details {
-    font-size: 14px;
-  }
-
   .post-card-date {
     letter-spacing: 0.08em;
   }
@@ -1121,3 +836,130 @@ img {
     padding-top: 20px;
   }
 }
+
+</style>
+
+  <meta name="generator" content="Hexo 7.3.0"></head>
+  <body class="site-body">
+    <header class="site-header">
+  <div class="container-shell header-inner">
+    <a class="brandmark" href="mystar-home.html">mystar</a>
+    <div class="brand-issue">Essence No.1</div>
+    <nav class="site-nav">
+      
+        <a href="mystar-home.html">Home</a>
+      
+        <a href="mystar-archive.html">Archive</a>
+      
+        <a href="mystar-about.html">About</a>
+      
+    </nav>
+  </div>
+</header>
+
+
+    <main class="site-main">
+      <section class="about-shell">
+  <div class="about-hero container-shell">
+    <div class="about-hero-title">
+      <p class="section-label">Introduction</p>
+      <h1 class="about-display-title">About</h1>
+    </div>
+
+    <div class="about-intro-shell container-reading">
+      <div class="about-intro-copy">
+        <div class="article-prose about-prose-intro">
+          <p>我是 <code>mystar</code>，一个持续在设计、系统与长文阅读体验之间寻找平衡的人。</p>
+<p>这个站点不是单纯的博客，也不只是一个作品页。它更像一个不断生长的个人知识档案，用来沉淀思考、整理方法、记录我对界面、内容、技术和审美的长期兴趣。</p>
+<p>我更在意的不是“快速产出”，而是让信息、结构和视觉一起服务于理解本身。对我来说，好的页面应该像安静的空间，让内容有呼吸，也让阅读者愿意停留。</p>
+<h2 id="工作方式"><a href="#工作方式" class="headerlink" title="工作方式"></a>工作方式</h2><p>我倾向于用更克制的方式做设计和内容：</p>
+<ul>
+<li>从结构开始，而不是从装饰开始</li>
+<li>用排版、留白和节奏建立层级</li>
+<li>让技术实现服务于内容体验</li>
+<li>在长时间使用后仍然保持舒服和稳定</li>
+</ul>
+<h2 id="当前关注"><a href="#当前关注" class="headerlink" title="当前关注"></a>当前关注</h2><p>目前我主要持续关注这些方向：</p>
+<ul>
+<li>数字产品中的编辑感与秩序感</li>
+<li>AI 与内容系统的结合方式</li>
+<li>个人知识库与长期写作机制</li>
+<li>前端实现中的质感、节奏和可维护性</li>
+</ul>
+<h2 id="这个网站会写什么"><a href="#这个网站会写什么" class="headerlink" title="这个网站会写什么"></a>这个网站会写什么</h2><p>接下来这里会逐步发布：</p>
+<ul>
+<li>关于设计与界面的观察</li>
+<li>关于系统、工作流和个人方法论的记录</li>
+<li>关于 AI、前端与内容工具的实践</li>
+<li>一些更慢、更个人化的随笔与长期主题</li>
+</ul>
+<h2 id="联系方式"><a href="#联系方式" class="headerlink" title="联系方式"></a>联系方式</h2><p>如果你也在意长期主义、内容质量、数字质感，欢迎之后通过社交链接或邮件和我交流。</p>
+
+        </div>
+
+        <blockquote class="about-quote">
+          “Design is the silent ambassador of your brand's soul.”
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <section class="about-expertise">
+    <div class="container-shell">
+      <div class="about-section-head">
+        <h2 class="about-section-title">核心能力 / Expertise</h2>
+        <p class="section-label">Editorial Practice</p>
+      </div>
+
+      <div class="expertise-grid">
+        <article class="expertise-card">
+          <p class="expertise-index">01 / CREATION</p>
+          <h3>Digital Craft</h3>
+          <p>从页面结构、内容承载到细节表达，关注数字产品如何在长期使用中依然保持清晰与质感。</p>
+        </article>
+
+        <article class="expertise-card">
+          <p class="expertise-index">02 / INSIGHT</p>
+          <h3>Visual Research</h3>
+          <p>持续研究编辑感、阅读体验和品牌气质之间的关系，让视觉不止是表面，而成为理解的一部分。</p>
+        </article>
+
+        <article class="expertise-card">
+          <p class="expertise-index">03 / SYSTEM</p>
+          <h3>Curated Thought</h3>
+          <p>把设计、技术与写作组织成一个可持续的系统，让内容表达、更新机制与前端质感彼此协同。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="about-contact container-shell">
+    <p class="section-label about-contact-label">Get In Touch</p>
+    <h2 class="about-contact-title">期待与同样追求秩序、审美和长期价值的人产生共振</h2>
+
+    <div class="about-contact-links">
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="mailto:hello@example.com">Email</a>
+    </div>
+  </section>
+</section>
+
+    </main>
+    <footer class="site-footer">
+  <div class="container-shell footer-inner">
+    <div>
+      <h3 class="footer-brand">mystar</h3>
+      <p class="footer-copy">关于设计、系统与长文阅读体验的个人知识档案。</p>
+    </div>
+    <div class="footer-meta">
+      <span>GitHub Pages</span>
+      <span>Hexo Theme in Progress</span>
+    </div>
+  </div>
+</footer>
+
+
+  </body>
+</html>
+

@@ -1,11 +1,60 @@
 <% const homeConfig = theme.home || {}; %>
 <% const latest = homeConfig.latest || {}; %>
 <% const quoteBanner = homeConfig.quote_banner || {}; %>
+<% const resumeSections = theme.profile.resume.sections; %>
 
 <section class="home-shell">
   <%- partial('partial/hero') %>
 
-  <section class="post-stream container-shell">
+  <div class="resume-sections container-shell">
+    <% resumeSections.forEach(function(section){ %>
+      <section id="<%= section.id %>" class="resume-section">
+        <div class="resume-section-head">
+          <div>
+            <p class="section-label"><%= section.en %></p>
+            <h2 class="section-title"><%= section.title %></h2>
+          </div>
+        </div>
+
+        <div class="resume-items">
+          <% section.items.forEach(function(item){ %>
+            <article class="resume-item">
+              <% if (item.title || item.date) { %>
+                <div class="resume-item-head">
+                  <div>
+                    <% if (item.title) { %><h3><%= item.title %></h3><% } %>
+                    <% if (item.subtitle) { %><p class="resume-item-subtitle"><%= item.subtitle %></p><% } %>
+                  </div>
+                  <% if (item.date) { %><time><%= item.date %></time><% } %>
+                </div>
+              <% } %>
+              <% if (item.link) { %>
+                <a class="resume-item-link" href="<%= item.link %>" target="_blank" rel="noreferrer"><%= item.link_text %></a>
+              <% } %>
+              <% if (item.details) { %>
+                <ul class="resume-item-details">
+                  <% item.details.forEach(function(detail){ %>
+                    <li><%= detail %></li>
+                  <% }); %>
+                </ul>
+              <% } %>
+            </article>
+          <% }); %>
+        </div>
+      </section>
+    <% }); %>
+  </div>
+
+  <section class="quote-banner container-shell">
+    <div class="quote-banner-media">
+      <img src="<%= url_for(quoteBanner.image || '/images/site/9d81f4c2fbb696df787c56dd11c38b14.jpg') %>" alt="<%= quoteBanner.image_alt || 'Snow mountain landscape' %>" loading="lazy" decoding="async" width="900" height="1600">
+      <div class="quote-banner-overlay">
+        <p class="quote-banner-text">“<%= quoteBanner.text || 'A quieter surface gives thoughtful work more room to breathe.' %>”</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="articles" class="post-stream container-shell">
     <div class="section-head">
       <div>
         <p class="section-label"><%= latest.label || 'Latest Notes' %></p>
@@ -18,15 +67,6 @@
       <% page.posts.each(function(post){ %>
         <%- partial('partial/post-card', { post: post }) %>
       <% }) %>
-    </div>
-  </section>
-
-  <section class="quote-banner container-shell">
-    <div class="quote-banner-media">
-      <img src="<%= url_for(quoteBanner.image || '/images/site/9d81f4c2fbb696df787c56dd11c38b14.jpg') %>" alt="<%= quoteBanner.image_alt || 'Snow mountain landscape' %>" loading="lazy" decoding="async" width="900" height="1600">
-      <div class="quote-banner-overlay">
-        <p class="quote-banner-text">“<%= quoteBanner.text || 'A quieter surface gives thoughtful work more room to breathe.' %>”</p>
-      </div>
     </div>
   </section>
 </section>

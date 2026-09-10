@@ -1,0 +1,48 @@
+<% const profile = theme.profile || {}; %>
+<% const navigation = Array.isArray(profile.navigation) ? profile.navigation : []; %>
+
+<aside class="profile-sidebar">
+  <div class="profile-sidebar-inner">
+    <div class="profile-identity">
+      <% if (profile.avatar) { %>
+        <img class="profile-avatar" src="<%= url_for(profile.avatar) %>" alt="<%= profile.name || 'Profile' %>" width="80" height="80">
+      <% } else { %>
+        <div class="profile-avatar profile-avatar-placeholder" aria-hidden="true"><%= profile.initials || 'CJX' %></div>
+      <% } %>
+      <h2 class="profile-name"><%= profile.name || '陈嘉希' %></h2>
+      <p class="profile-role"><%= profile.role || 'Product Planner / 3D + AI' %></p>
+    </div>
+
+    <nav class="profile-navigation" aria-label="个人履历导航">
+      <% navigation.forEach(function(item, index) { %>
+        <a class="profile-nav-link<%= index === 0 && is_home() ? ' is-active' : '' %>" href="<%= url_for(item.href || '/') %>">
+          <span class="profile-nav-index"><%= String(index + 1).padStart(2, '0') %></span>
+          <span><%= item.label %><% if (item.meta) { %> / <%= item.meta %><% } %></span>
+        </a>
+      <% }); %>
+    </nav>
+
+    <div class="profile-contact">
+      <% if (profile.email) { %>
+        <a href="mailto:<%= profile.email %>">
+          <span class="profile-contact-label">Email</span>
+          <span><%= profile.email %></span>
+        </a>
+      <% } %>
+      <% if (profile.phone) { %>
+        <a href="tel:<%= profile.phone %>">
+          <span class="profile-contact-label">Tel</span>
+          <span><%= profile.phone %></span>
+        </a>
+      <% } %>
+      <% if (profile.portfolio) { %>
+        <a href="<%= profile.portfolio %>" target="_blank" rel="noreferrer">
+          <span class="profile-contact-label">Work</span>
+          <span>在线作品集 ↗</span>
+        </a>
+      <% } %>
+    </div>
+
+    <p class="profile-copyright">© <%= date(new Date(), 'YYYY') %> MYSTAR.</p>
+  </div>
+</aside>

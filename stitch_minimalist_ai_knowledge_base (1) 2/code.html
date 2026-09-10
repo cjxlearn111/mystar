@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="light" lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ethereal Journal | Editor</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&amp;family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            font-size: 20px;
+        }
+        .glass-panel {
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        ::selection {
+            background: rgba(0, 0, 0, 0.1);
+            color: #000;
+        }
+        .writing-canvas:focus {
+            outline: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 12px;
+            height: 12px;
+            background: #000;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-high": "#e9e7ed",
+                    "surface-container-low": "#f4f3f8",
+                    "on-surface": "#1a1b1f",
+                    "on-secondary-fixed-variant": "#454749",
+                    "tertiary": "#000000",
+                    "on-background": "#1a1b1f",
+                    "surface": "#faf8fe",
+                    "primary-fixed-dim": "#c8c6c5",
+                    "outline": "#747878",
+                    "on-primary-fixed": "#1c1b1b",
+                    "tertiary-fixed-dim": "#abc7ff",
+                    "on-secondary-container": "#616365",
+                    "on-tertiary-fixed": "#001b3f",
+                    "inverse-on-surface": "#f1f0f5",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#e5e2e1",
+                    "on-tertiary-container": "#2b82f4",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#444748",
+                    "inverse-surface": "#2f3034",
+                    "error": "#ba1a1a",
+                    "surface-variant": "#e3e2e7",
+                    "on-secondary-fixed": "#1a1c1d",
+                    "secondary-container": "#dfdfe1",
+                    "background": "#faf8fe",
+                    "surface-tint": "#5f5e5e",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed": "#e2e2e4",
+                    "surface-container": "#eeedf3",
+                    "surface-dim": "#dad9df",
+                    "primary": "#000000",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#c8c6c5",
+                    "outline-variant": "#c4c7c7",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#858383",
+                    "surface-bright": "#faf8fe",
+                    "on-primary": "#ffffff",
+                    "secondary": "#5d5e60",
+                    "secondary-fixed-dim": "#c6c6c8",
+                    "on-tertiary-fixed-variant": "#00458f",
+                    "tertiary-fixed": "#d7e2ff",
+                    "tertiary-container": "#001b3f",
+                    "on-primary-fixed-variant": "#474746",
+                    "on-secondary": "#ffffff",
+                    "surface-container-highest": "#e3e2e7",
+                    "primary-container": "#1c1b1b"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "base": "8px",
+                    "margin-mobile": "20px",
+                    "container-max": "1120px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Bodoni Moda"],
+                    "body-md": ["Inter"],
+                    "headline-md": ["Bodoni Moda"],
+                    "label-caps": ["Inter"],
+                    "headline-lg-mobile": ["Bodoni Moda"],
+                    "headline-lg": ["Bodoni Moda"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface font-body-md selection:bg-primary/5">
+<!-- TopNavBar -->
+<header class="bg-surface/80 backdrop-blur-xl border-b border-outline-variant/30 sticky top-0 z-[100]">
+<div class="flex justify-between items-center w-full px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<span class="font-display-lg text-headline-md font-semibold text-primary">Ethereal Journal</span>
+<nav class="hidden md:flex gap-6">
+<a class="font-body-md text-body-md text-primary font-semibold border-b border-primary py-1" href="#">Drafts</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors duration-300" href="#">Published</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-colors duration-300" href="#">Analytics</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1.5 bg-surface-container rounded-full mr-4">
+<span class="material-symbols-outlined text-secondary scale-75">history</span>
+<span class="text-[10px] font-label-caps text-secondary uppercase tracking-widest">Auto-saved</span>
+</div>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">visibility</button>
+<button class="material-symbols-outlined text-secondary hover:text-primary transition-colors">settings</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps transition-opacity active:opacity-70">Publish</button>
+</div>
+</div>
+</header>
+<main class="flex flex-col min-h-[calc(100vh-80px)] relative">
+<!-- Writing Canvas -->
+<div class="flex-1 px-margin-desktop py-16 flex justify-center overflow-y-auto hide-scrollbar">
+<article class="max-w-[800px] w-full">
+<!-- Featured Image Placeholder -->
+<div class="mb-16 group relative">
+<div class="aspect-[16/9] w-full bg-surface-container overflow-hidden rounded-xl">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-fashion editorial photograph of a minimalist architectural interior with sharp geometric shadows cast across a white marble floor. The lighting is ethereal and high-contrast, emphasizing the 'Geometry of Light' concept." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaHfJvE0YuL_pFrAlORPtIW9C5bS6JOyxsqZ2TzbSrWTWM2JEMDYkog0OM2rhLIbqDs-xuwX4VRLtwEWHmKnBSIggVf4tRf-Uaao8RhZ_Z1wDAxPDfamJWv-UHwPH_MFUaSd4LrxJsGnpn4rPacKwSKHi_eIucMhWkPsKFYRr-tpBmVFXRAkm2qKATol4VO6kaxNGFOSrZD2GWt8auIs7Tqlo-V6KOPtiGwJobO8UsyK-zlE8SQk3pgo0lWmDyKO9edFMaMh755Ms"/>
+</div>
+<div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10 backdrop-blur-sm rounded-xl cursor-pointer">
+<div class="absolute top-4 right-4 flex gap-2">
+<button class="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-primary hover:bg-white transition-colors"><span class="material-symbols-outlined text-sm">settings</span></button>
+<button class="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-error hover:bg-white transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+<div class="flex flex-col items-center gap-2">
+<span class="material-symbols-outlined text-white text-4xl">edit</span>
+<span class="text-white font-label-caps text-[10px] tracking-widest uppercase">Replace Image</span>
+</div>
+</div>
+</div>
+<div class="space-y-12">
+<h1 class="font-display-lg text-display-lg outline-none border-l-2 border-primary/20 pl-6" contenteditable="true" spellcheck="false">
+                        The Geometry of Light
+                    </h1>
+<div class="flex items-center gap-4 text-secondary py-4 border-y border-outline-variant/20">
+<span class="font-label-caps text-label-caps tracking-widest uppercase">Essays</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-label-caps text-label-caps">Draft</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span class="font-label-caps text-label-caps opacity-60">Last saved: 2 mins ago</span>
+</div>
+<div class="writing-canvas font-body-lg text-body-lg text-on-surface/90 leading-relaxed space-y-8" contenteditable="true" spellcheck="false">
+<h2 class="font-headline-md text-headline-md mt-12 mb-6">静谧的建构 (The Architecture of Silence)</h2>
+<p>
+                            在这个喧嚣的时代，沉默已成为一种奢侈的建筑。它不仅仅是声音的缺席，而是一种空间的质感，一种光影在极简主义墙面上跳跃的律动。当我们观察光如何切开阴影，我们看到的不仅是物理现象，而是时间的雕刻。
+                        </p>
+<p>
+                            光影的几何学是一种古老而现代的语言。在安藤忠雄的混凝土缝隙中，在斯卡帕的细部构造里，静谧被物化。这种静谧不是死寂，而是一种高频的能量平衡，如同现代诗歌中那些恰到好处的留白。
+                        </p>
+<!-- Video Embed Block Placeholder -->
+<div class="my-16 bg-surface-container-high aspect-video rounded-xl flex flex-col items-center justify-center gap-4 border border-outline-variant/30 group cursor-pointer relative overflow-hidden">
+<span class="material-symbols-outlined text-5xl text-secondary z-10">play_circle</span>
+<span class="font-label-caps text-label-caps text-secondary tracking-widest z-10 uppercase">Insert Cinematic Sequence</span>
+<div class="absolute top-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-primary hover:bg-white transition-colors"><span class="material-symbols-outlined text-sm">settings</span></button>
+<button class="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center text-error hover:bg-white transition-colors"><span class="material-symbols-outlined text-sm">delete</span></button>
+</div>
+</div>
+<p>
+                            每一次提笔，我们都在试图捕捉那转瞬即逝的灵光。在 Ethereal Journal，文字不再只是信息的载体，而是视觉艺术的一部分。我们追求的，是那份能够让读者在阅读瞬间屏息凝神的纯粹感。
+                        </p>
+</div>
+</div>
+<!-- Add Content Tool -->
+<div class="mt-20 py-8 border-t border-outline-variant/20 mb-32">
+<button class="group flex items-center gap-4 text-secondary hover:text-primary transition-all duration-300">
+<div class="w-10 h-10 rounded-full border border-outline-variant flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-colors">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="font-label-caps text-label-caps tracking-widest uppercase">Add Interactive Block</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Visual Editor Suite (Redesigned Floating Bar) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-[960px] px-margin-mobile z-50">
+<div class="glass-panel border border-outline-variant/40 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] px-8 py-5 flex items-center justify-between gap-8">
+<!-- Formatting Tools -->
+<div class="flex items-center gap-1 border-r border-outline-variant/30 pr-6">
+<button class="material-symbols-outlined p-2 hover:bg-black/5 rounded-lg transition-colors" title="Bold">format_bold</button>
+<button class="material-symbols-outlined p-2 hover:bg-black/5 rounded-lg transition-colors" title="Italic">format_italic</button>
+<button class="material-symbols-outlined p-2 hover:bg-black/5 rounded-lg transition-colors" title="Link">link</button>
+<button class="material-symbols-outlined p-2 hover:bg-black/5 rounded-lg transition-colors" title="Quote">format_quote</button>
+<span class="w-[1px] h-4 bg-outline-variant/40 mx-2"></span>
+<button class="material-symbols-outlined p-2 hover:bg-black/5 rounded-lg transition-colors" title="List">format_list_bulleted</button>
+</div>
+<!-- Visual Controls Suite -->
+<div class="flex-1 flex items-center gap-10">
+<!-- Typography Selector -->
+<div class="flex flex-col gap-1 min-w-[140px]">
+<label class="text-[9px] uppercase tracking-widest text-secondary font-bold">Typeface</label>
+<div class="relative group">
+<select class="appearance-none bg-transparent border-none p-0 pr-6 font-body-md text-xs focus:ring-0 cursor-pointer w-full">
+<option>Bodoni Moda</option>
+<option>Inter</option>
+<option>Source Serif</option>
+</select>
+<span class="material-symbols-outlined absolute right-0 top-1/2 -translate-y-1/2 text-[14px] pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Size Control -->
+<div class="flex flex-col gap-1 flex-1">
+<div class="flex justify-between items-center">
+<label class="text-[9px] uppercase tracking-widest text-secondary font-bold">Body Size</label>
+<span class="text-[10px] font-mono">18px</span>
+</div>
+<input class="w-full h-[2px] bg-outline-variant/40 rounded-lg appearance-none cursor-pointer accent-black" max="24" min="14" type="range" value="18"/>
+</div>
+<!-- Layout Options -->
+<div class="flex flex-col gap-1">
+<label class="text-[9px] uppercase tracking-widest text-secondary font-bold">Layout</label>
+<div class="flex gap-2">
+<button class="material-symbols-outlined text-[18px] text-primary" title="Centered">align_center</button>
+<button class="material-symbols-outlined text-[18px] text-secondary hover:text-primary transition-colors" title="Full Width">format_align_justify</button>
+</div>
+</div>
+</div>
+<!-- Global Actions -->
+<div class="flex items-center gap-3 border-l border-outline-variant/30 pl-6">
+<button class="flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full hover:opacity-90 transition-all active:scale-95 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+<span class="font-label-caps text-[10px] tracking-widest uppercase">AI Rewrite</span>
+</button>
+<button class="material-symbols-outlined p-2 hover:bg-black/5 rounded-full transition-colors text-secondary" title="More Options">more_vert</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Component -->
+<footer class="bg-surface border-t border-outline-variant/20 relative z-10">
+<div class="w-full py-12 px-margin-desktop flex flex-col md:flex-row justify-between items-center max-w-container-max mx-auto gap-8">
+<div class="flex flex-col gap-1">
+<span class="font-display-lg text-body-lg text-primary">Ethereal Journal</span>
+<p class="font-label-caps text-[10px] text-secondary opacity-60 tracking-widest uppercase">A Canvas for Pure Thought</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-md text-sm text-secondary hover:text-primary transition-colors" href="#">Privacy</a>
+<a class="font-body-md text-sm text-secondary hover:text-primary transition-colors" href="#">Terms</a>
+<a class="font-body-md text-sm text-secondary hover:text-primary transition-colors" href="#">Support</a>
+</div>
+<p class="font-body-md text-sm text-secondary opacity-60">© 2024 Ethereal Journal. All rights reserved.</p>
+</div>
+</footer>
+<script>
+        const canvas = document.querySelector('.writing-canvas');
+        const editorSuite = document.querySelector('.fixed.bottom-8');
+
+        // Elegant show/hide for the editor suite
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 200) {
+                editorSuite.style.transform = 'translate(-50%, 150%)';
+                editorSuite.style.opacity = '0';
+            } else {
+                editorSuite.style.transform = 'translate(-50%, 0)';
+                editorSuite.style.opacity = '1';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Placeholder for content saving logic
+        canvas.addEventListener('input', () => {
+            // Auto-save logic could be triggered here
+        });
+    </script>
+</body></html>

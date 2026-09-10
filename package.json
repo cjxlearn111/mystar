@@ -6,6 +6,7 @@
   "scripts": {
     "clean": "hexo clean",
     "dev": "hexo server",
+    "editor": "node tools/local-editor/server.js",
     "build": "hexo generate",
     "deploy": "hexo deploy",
     "new:post": "hexo new post",

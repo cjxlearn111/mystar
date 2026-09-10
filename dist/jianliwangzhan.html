@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>陈嘉希 · 产品体验设计实习生简历</title>
+    
+    <!-- 引入高级字体 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- 引入 Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            /* mystar 核心色彩系统 */
+            --bg-page: #faf8fe;
+            --bg-surface: #ffffff;
+            --bg-muted: #f4f3f8;
+            --text-primary: #1a1b1f;
+            --text-secondary: #5d5e60;
+            --text-muted: #8a8b8d;
+            --brand-primary: #111111;
+            --border-soft: rgba(0, 0, 0, 0.06);
+            --border-strong: #e3e2e7;
+            
+            /* 字体排版 */
+            --font-display: "Bodoni Moda", serif;
+            --font-body: "Inter", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+            
+            /* 阴影与过渡 */
+            --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        /* 基础重置 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            display: flex;
+            -webkit-font-smoothing: antialiased;
+        }
+        a { text-decoration: none; color: inherit; transition: var(--transition); }
+        ul { list-style: none; }
+
+        /* 全局滚动条美化 */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* ================= 左侧固定导航栏 ================= */
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            position: fixed;
+            top: 0; left: 0;
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border-soft);
+            padding: 48px 32px;
+            display: flex;
+            flex-direction: column;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        
+        .brand-header { margin-bottom: 40px; }
+        .brand-name { font-family: var(--font-display); font-size: 28px; font-weight: 600; color: var(--brand-primary); margin-bottom: 24px; }
+        .profile-avatar { width: 72px; height: 72px; border-radius: 12px; object-fit: cover; margin-bottom: 16px; background: var(--bg-muted); border: 1px solid var(--border-soft); }
+        .profile-title { font-size: 18px; font-weight: 600; margin-bottom: 4px; color: var(--text-primary); }
+        .profile-subtitle { font-size: 11px; color: var(--text-secondary); letter-spacing: 0.05em; text-transform: uppercase; }
+
+        .nav-menu { display: flex; flex-direction: column; gap: 8px; flex-grow: 1; margin-bottom: 40px; }
+        .nav-item {
+            display: flex; align-items: center; gap: 12px;
+            font-size: 14px; color: var(--text-secondary);
+            padding: 10px 12px; border-radius: 8px;
+            transition: var(--transition);
+        }
+        .nav-item i { width: 18px; height: 18px; opacity: 0.7; transition: var(--transition); }
+        .nav-item:hover, .nav-item.active { background: var(--bg-muted); color: var(--brand-primary); font-weight: 500; }
+        .nav-item:hover i, .nav-item.active i { opacity: 1; stroke-width: 2.5px; }
+
+        .sidebar-footer { font-size: 12px; color: var(--text-muted); border-top: 1px solid var(--border-soft); padding-top: 24px; }
+        .sidebar-footer a { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+        .sidebar-footer a:hover { color: var(--brand-primary); }
+
+        /* ================= 右侧主干内容区 ================= */
+        .main-content {
+            margin-left: 260px;
+            flex-grow: 1;
+            padding: 80px 10%;
+            max-width: 1200px;
+        }
+
+        /* 概览模块 (逻辑优化：去除了浮动卡片，采用经典的左文右图杂志排版) */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        
+        .hero-eyebrow { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 20px; }
+        .hero-title { font-family: var(--font-display); font-size: clamp(40px, 5vw, 64px); line-height: 1.1; color: var(--text-primary); margin-bottom: 24px; font-weight: 500; }
+        .hero-title i { font-style: italic; color: var(--text-secondary); font-weight: 400; }
+        .hero-desc { font-size: 16px; color: var(--text-secondary); line-height: 1.8; margin-bottom: 40px; max-width: 90%; }
+        
+        .hero-actions { display: flex; gap: 16px; }
+        .btn-primary { background: var(--brand-primary); color: #fff; padding: 14px 32px; border-radius: 99px; font-size: 14px; font-weight: 500; transition: var(--transition); box-shadow: var(--shadow-soft); }
+        .btn-secondary { background: transparent; border: 1px solid var(--border-strong); color: var(--text-primary); padding: 14px 32px; border-radius: 99px; font-size: 14px; font-weight: 500; transition: var(--transition); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.1); }
+        .btn-secondary:hover { border-color: var(--brand-primary); background: var(--bg-surface); }
+        
+        .hero-image-wrapper { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3/4; background: var(--border-strong); box-shadow: var(--shadow-soft); }
+        .hero-image-wrapper img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.9) contrast(1.05); transition: var(--transition); }
+        .hero-image-wrapper:hover img { transform: scale(1.03); }
+
+        /* ================= 简历区块与时间线排版 ================= */
+        .resume-section { margin-bottom: 80px; position: relative; }
+        
+        .section-header { margin-bottom: 40px; display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid var(--border-soft); padding-bottom: 16px; }
+        .section-icon { width: 24px; height: 24px; color: var(--text-primary); }
+        .section-title { font-family: var(--font-display); font-size: 32px; color: var(--text-primary); font-weight: 500; }
+        .section-en { font-size: 11px; color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+
+        /* 时间线容器 */
+        .timeline-container { position: relative; padding-left: 24px; }
+        .timeline-container::before { content: ''; position: absolute; left: 0; top: 8px; bottom: 0; width: 1px; background: var(--border-strong); }
+
+        .timeline-item { position: relative; margin-bottom: 40px; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        /* 时间线上的圆点 */
+        .timeline-item::before {
+            content: ''; position: absolute; left: -28px; top: 8px; width: 9px; height: 9px;
+            background: var(--brand-primary); border-radius: 50%;
+            box-shadow: 0 0 0 4px var(--bg-page);
+        }
+
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; flex-wrap: wrap; gap: 8px; }
+        .item-title { font-size: 18px; font-weight: 600; color: var(--text-primary); }
+        .item-date { font-size: 13px; color: var(--text-secondary); font-family: "Inter", monospace; background: var(--bg-muted); padding: 4px 10px; border-radius: 6px; }
+        .item-subtitle { font-size: 15px; font-weight: 500; color: var(--text-secondary); margin-bottom: 16px; }
+        
+        /* 列表排版 */
+        .desc-list li { position: relative; padding-left: 16px; margin-bottom: 10px; font-size: 14.5px; color: var(--text-secondary); line-height: 1.7; text-align: justify; }
+        .desc-list li::before { content: ""; position: absolute; left: 0; top: 10px; width: 4px; height: 4px; background-color: var(--text-muted); border-radius: 50%; }
+        .desc-list li strong { color: var(--text-primary); font-weight: 600; }
+
+        /* 外部链接样式 */
+        .link-tag { display: inline-flex; align-items: center; gap: 4px; font-size: 13px; color: var(--text-secondary); background: var(--bg-surface); border: 1px solid var(--border-strong); padding: 6px 12px; border-radius: 6px; margin-bottom: 16px; transition: var(--transition); }
+        .link-tag i { width: 14px; height: 14px; }
+        .link-tag:hover { border-color: var(--brand-primary); color: var(--brand-primary); }
+
+        /* 教育背景特殊网格 */
+        .edu-grid { display: grid; grid-template-columns: 1.5fr 1fr 2fr; gap: 16px; font-size: 15px; margin-bottom: 8px; align-items: baseline; }
+        .edu-school { font-weight: 600; color: var(--text-primary); font-size: 16px; }
+
+        /* 响应式适配 */
+        @media (max-width: 1024px) {
+            .hero-section { grid-template-columns: 1fr; gap: 40px; }
+            .hero-image-wrapper { max-width: 400px; margin: 0 auto; }
+            .main-content { padding: 60px 5%; }
+            .edu-grid { grid-template-columns: 1fr; gap: 4px; }
+        }
+        @media (max-width: 768px) {
+            .sidebar { transform: translateX(-100%); transition: transform 0.3s ease; }
+            .sidebar.open { transform: translateX(0); box-shadow: 20px 0 50px rgba(0,0,0,0.1); }
+            .main-content { margin-left: 0; padding: 40px 5%; }
+            
+            /* Mobile Header */
+            .mobile-header { display: flex; justify-content: space-between; align-items: center; padding: 20px; background: var(--bg-surface); border-bottom: 1px solid var(--border-soft); position: sticky; top: 0; z-index: 90; }
+            .mobile-brand { font-family: var(--font-display); font-size: 24px; font-weight: 600; }
+            .menu-btn { background: none; border: none; font-size: 24px; color: var(--text-primary); }
+            
+            .hero-title { font-size: 36px; }
+            .item-header { flex-direction: column; align-items: flex-start; }
+            .timeline-item::before { display: none; }
+            .timeline-container::before { display: none; }
+            .timeline-container { padding-left: 0; }
+            .resume-section { border-left: none; }
+        }
+        @media (min-width: 769px) {
+            .mobile-header { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 移动端顶部导航 -->
+    <header class="mobile-header">
+        <div class="mobile-brand">mystar</div>
+        <button class="menu-btn" onclick="toggleSidebar()"><i data-lucide="menu"></i></button>
+    </header>
+
+    <!-- ================= 左侧固定档案架 (Sidebar) ================= -->
+    <aside class="sidebar" id="sidebar">
+        <div class="brand-header">
+            <div class="brand-name">mystar</div>
+            <!-- 替换为你的真实头像 -->
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop" alt="陈嘉希 Avatar" class="profile-avatar">
+            <h2 class="profile-title">陈嘉希</h2>
+            <p class="profile-subtitle">UX/UI & Game Planner</p>
+        </div>
+        
+        <!-- 导航菜单对齐参考图架构 -->
+        <nav class="nav-menu" id="nav-menu">
+            <a href="#intro" class="nav-item active"><i data-lucide="compass"></i> 概览 / Intro</a>
+            <a href="#education" class="nav-item"><i data-lucide="book-open"></i> 教育背景</a>
+            <a href="#internship" class="nav-item"><i data-lucide="badge-check"></i> 实习经历</a>
+            <a href="#projects" class="nav-item"><i data-lucide="folder-open"></i> 项目经历</a>
+            <a href="#awards" class="nav-item"><i data-lucide="award"></i> 获奖情况</a>
+            <a href="#gaming" class="nav-item"><i data-lucide="gamepad-2"></i> 游戏经历</a>
+            <a href="#skills" class="nav-item"><i data-lucide="pen-tool"></i> 相关技能</a>
+            <a href="#campus" class="nav-item"><i data-lucide="graduation-cap"></i> 校园经历</a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <a href="mailto:1621115862@qq.com"><i data-lucide="mail"></i> 1621115862@qq.com</a>
+            <a href="tel:17320536503"><i data-lucide="phone"></i> 17320536503</a>
+            <p style="margin-top: 16px; color: var(--border-strong);">© 2026 MYSTAR.</p>
+        </div>
+    </aside>
+
+    <!-- ================= 右侧沉浸式瀑布流内容 ================= -->
+    <main class="main-content">
+        
+        <!-- 1. 概览 / Intro (逻辑优化版) -->
+        <section id="intro" class="hero-section">
+            <div class="hero-content">
+                <span class="hero-eyebrow">Editorial Notes</span>
+                <h1 class="hero-title">Crafting <i>immersive</i> <br>digital experiences.</h1>
+                <p class="hero-desc">
+                    你好，我是陈嘉希。武汉理工大学新媒体艺术准硕士。这里是我的数字档案，记录我在<strong>产品体验设计 (UI/UX)</strong> 与<strong>游戏策划</strong>领域的实践探索。我致力于在逻辑系统与美学感知之间寻找最佳平衡。
+                </p>
+                <div class="hero-actions">
+                    <a href="#education" class="btn-primary">浏览完整履历</a>
+                    <a href="https://book.yunzhan365.com/dnifj/nwvm/mobile/index.html" target="_blank" class="btn-secondary">查看在线作品集 <i data-lucide="arrow-up-right" style="display:inline; width:14px; height:14px; vertical-align:middle;"></i></a>
+                </div>
+            </div>
+            
+            <div class="hero-image-wrapper">
+                <!-- 替换为符合你气质的高级占位图或个人照片 -->
+                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200&auto=format&fit=crop" alt="Architecture Minimal">
+            </div>
+        </section>
+
+        <!-- 2. 教育背景 -->
+        <section id="education" class="resume-section">
+            <header class="section-header">
+                <i data-lucide="book-open" class="section-icon"></i>
+                <h2 class="section-title">教育背景</h2>
+                <span class="section-en">Education</span>
+            </header>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="edu-grid">
+                            <span class="edu-school">武汉理工大学</span>
+                            <span class="item-subtitle" style="margin-bottom:0;">硕士 · 艺术与设计学院（新媒体艺术方向）</span>
+                        </div>
+                        <span class="item-date">2025.09 - 2028.07</span>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <div class="edu-grid">
+                            <span class="edu-school">湖北美术学院</span>
+                            <span class="item-subtitle" style="margin-bottom:0;">本科 · 影视动画学院（游戏互动方向）</span>
+                        </div>
+                        <span class="item-date">2020.09 - 2024.07</span>
+                    </div>
+                    <ul class="desc-list" style="margin-top: 12px;">
+                        <li><strong>主修课程：</strong>用户体验与可用性设计，人工智能艺术，游戏策划，AIGC艺术设计，虚拟漫游与交互，三维模型与制作，空间设计基础，美学原理。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 实习经历 -->
+        <section id="internship" class="resume-section">
+            <header class="section-header">
+                <i data-lucide="badge-check" class="section-icon"></i>
+                <h2 class="section-title">实习经历</h2>
+                <span class="section-en">Internship</span>
+            </header>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <h3 class="item-title">珞珈实验室（湖北）元梦 3D 元宇宙平台</h3>
+                        <span class="item-date">2025.08 - 2025.12</span>
+                    </div>
+                    <div class="item-subtitle">产品策划 / UIUX设计实习生</div>
+                    <ul class="desc-list">
+                        <li><strong>交互流程优化：</strong>参与“手机拍照一键生成 3D 模型”功能迭代。提出 3 项交互简化方案，缩减操作步骤 20%，提升新手模型生成成功率。</li>
+                        <li><strong>竞品数据分析：</strong>深度拆解相关 3D 建模竞品，输出功能对比评估报告，为产品迭代方向提供数据支持。</li>
+                        <li><strong>美术资产规范：</strong>负责产品迭代期的美术资产把控，统一 UI 视觉风格，确保视觉元素符合平台设计规范。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 项目经历 -->
+        <section id="projects" class="resume-section">
+            <header class="section-header">
+                <i data-lucide="folder-open" class="section-icon"></i>
+                <h2 class="section-title">项目经历</h2>
+                <span class="section-en">Projects</span>
+            </header>
+            
+            <div class="timeline-container">
+                <!-- 项目1 -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <h3 class="item-title">《汪汪特工队》养成类游戏</h3>
+                        <span class="item-date">2024.01 - 2024.06</span>
+                    </div>
+                    <div class="item-subtitle">项目负责人 / 主策划</div>
+                    <a href="https://share.weiyun.com/sV2LvcUk?weiyun_qr_code=1" target="_blank" class="link-tag">
+                        <i data-lucide="play-circle"></i> 观看演示视频
+                    </a>
+                    <ul class="desc-list">
+                        <li><strong>项目介绍：</strong>一款融合“警犬题材”与“休闲养成”玩法的创新养成类游戏。</li>
+                        <li>主导产品从 0 到 1 的研发周期，撰写完整系统设计文档与核心数值规划。统筹管理 8 人跨专业团队（程序、美术、策划），确保开发排期精准推进。</li>
+                        <li>把控游戏美术风格与核心资源制作。参与引擎部署环节，统一整体视觉规范。</li>
+                        <li>完成最终 Demo 的交付与验收，成功斩获未来制作人大奖赛（武汉站）“最佳人气奖”。</li>
+                    </ul>
+                </div>
+
+                <!-- 项目2 -->
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <h3 class="item-title">轻量化 3D 立体相册应用</h3>
+                        <span class="item-date">2025.03 - 至今</span>
+                    </div>
+                    <div class="item-subtitle">产品负责人 / UIUX设计 （0-1 独立开发）</div>
+                    <a href="https://my.feishu.cn/wiki/T9xvwEvSzizjm9ksYlwcKvvNn9g" target="_blank" class="link-tag">
+                        <i data-lucide="external-link"></i> 产品实机演示
+                    </a>
+                    <ul class="desc-list">
+                        <li><strong>项目介绍：</strong>一款打破传统 2D 空间局限，主打移动端流畅浏览的 3D 互动相册。</li>
+                        <li>确立以 3DGS 技术为核心驱动。利用 AI 前端技术栈独立完成页面搭建与 UI 逻辑编写，进行产品原型验证到前端交互实现的全流程。</li>
+                        <li>制定视觉交互规范，引入设计令牌（Design Tokens）与标准化组件（Components）确保视觉一致性。</li>
+                        <li>打通从痛点洞察、UI/UX 设计到前端代码落地的全链路，实现产品从概念到可交付演示版本的转化。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 获奖情况 -->
+        <section id="awards" class="resume-section">
+            <header class="section-header">
+                <i data-lucide="award" class="section-icon"></i>
+                <h2 class="section-title">获奖情况</h2>
+                <span class="section-en">Awards</span>
+            </header>
+            
+            <div class="timeline-container">
+                <ul class="desc-list" style="list-style-type: none; padding-left: 0;">
+                    <li style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dashed var(--border-soft); padding-bottom: 12px; margin-bottom: 12px;">
+                        <span style="font-weight: 500; color: var(--text-primary); font-size: 15px;">第十一届“理工合伙人”研究生创业挑战赛三等奖</span>
+                        <span class="item-date" style="background: transparent; padding: 0;">2025.10</span>
+                    </li>
+                    <li style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 1px dashed var(--border-soft); padding-bottom: 12px; margin-bottom: 12px;">
+                        <span style="font-weight: 500; color: var(--text-primary); font-size: 15px;">未来制作人大奖赛“最佳人气奖”</span>
+                        <span class="item-date" style="background: transparent; padding: 0;">2024.05</span>
+                    </li>
+                    <li style="display: flex; justify-content: space-between; align-items: baseline;">
+                        <span style="font-weight: 500; color: var(--text-primary); font-size: 15px;">《基于苗族传说“蝴蝶妈妈”的动力学首饰设计》于《优享生活》杂志发表</span>
+                        <span class="item-date" style="background: transparent; padding: 0;">2024.01</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 6. 游戏经历 -->
+        <section id="gaming" class="resume-section">
+            <header class="section-header">
+                <i data-lucide="gamepad-2" class="section-icon"></i>
+                <h2 class="section-title">游戏经历</h2>
+                <span class="section-en">Gaming</span>
+            </header>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <ul class="desc-list">
+                        <li><strong>主流品类体验：</strong>长线重度游玩《原神》《崩坏：星穹铁道》《第五人格》等热门产品，熟悉二次元RPG与非对称竞技类游戏的核心玩法。</li>
+                        <li><strong>MOBA 竞技：</strong>资深《英雄联盟》玩家，最高段位达到<span style="color: var(--brand-primary); font-weight:600;">超凡大师</span>，具备丰富的硬核实战经验。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. 相关技能 -->
+        <section id="skills" class="resume-section">
+            <header class="section-header">
+                <i data-lucide="pen-tool" class="section-icon"></i>
+                <h2 class="section-title">相关技能</h2>
+                <span class="section-en">Skills</span>
+            </header>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <ul class="desc-list">
+                        <li><strong>产品原型设计：</strong>熟练使用 Figma、Axure 输出高保真原型，具备系统设计文档撰写与核心数值规划能力。</li>
+                        <li><strong>美术视觉设计：</strong>熟练使用 Photoshop、Illustrator、Blender 等工具进行 UI 视觉设计与 3D 资产制作。</li>
+                        <li><strong>前端技术：</strong>熟悉 HTML/CSS/JavaScript，掌握 AI 辅助编程代码落地。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. 校园经历 -->
+        <section id="campus" class="resume-section">
+            <header class="section-header">
+                <i data-lucide="graduation-cap" class="section-icon"></i>
+                <h2 class="section-title">校园经历</h2>
+                <span class="section-en">Campus</span>
+            </header>
+            
+            <div class="timeline-container">
+                <div class="timeline-item">
+                    <div class="item-header">
+                        <h3 class="item-title">艺奇游研社社长 | 湖北美术学院</h3>
+                        <span class="item-date">2022.02 - 2023.03</span>
+                    </div>
+                    <ul class="desc-list">
+                        <li><strong>跨校活动策划：</strong>联合武汉大学、华中科技大学等 4 所高校社团，举办“融艺”跨学科交流会及校内首届 Game Jam 比赛（超 300 人参与）。</li>
+                        <li><strong>社团运营：</strong>优化社团分工与招新流程。任职期间社团核心成员规模增长 50%，共举办 3 场百人级社团活动。</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 交互脚本 -->
+    <script>
+        // 初始化 Lucide 图标
+        lucide.createIcons();
+
+        // 移动端侧边栏切换
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('open');
+        }
+
+        // 滚动监听：高亮当前所在的侧边栏导航
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.3 // 当区块 30% 进入视口时触发
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const currentId = entry.target.getAttribute('id');
+                        
+                        // 移除所有 active 类
+                        navItems.forEach(item => item.classList.remove('active'));
+                        
+                        // 寻找对应 href 的 a 标签并添加 active
+                        const activeItem = document.querySelector(`.nav-item[href="#${currentId}"]`);
+                        if (activeItem) {
+                            activeItem.classList.add('active');
+                        }
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => observer.observe(section));
+
+            // 点击导航后，在移动端自动收起侧边栏
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const sidebar = document.getElementById('sidebar');
+                    if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

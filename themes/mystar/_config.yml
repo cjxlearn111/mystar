@@ -1,18 +1,135 @@
 menu:
   Home: /
-  Archive: /archives/
-  About: /about/
 
 brand:
   name: mystar
   issue: Essence No.1
   description: 关于设计、系统与长文阅读体验的个人知识档案。
 
+profile:
+  name: 陈嘉希
+  initials: CJX
+  role: Product Planner / 3D + AI
+  avatar: ""
+  email: 1621115862@qq.com
+  phone: "17320536503"
+  portfolio: https://cjxlearn111.github.io/art-portfolio/
+  navigation:
+    - label: 概览
+      meta: Intro
+      href: /home/#intro
+    - label: 教育背景
+      href: /home/#education
+    - label: 实习经历
+      href: /home/#internship
+    - label: 项目经历
+      href: /home/#projects
+    - label: 获奖情况
+      href: /home/#awards
+    - label: 相关技能
+      href: /home/#skills
+    - label: 校园经历
+      href: /home/#campus
+    - label: 相关文章
+      href: /home/#articles
+  resume:
+    sections:
+      - id: education
+        title: 教育背景
+        en: Education
+        items:
+          - title: 武汉理工大学
+            subtitle: 硕士 · 艺术与设计学院（新媒体艺术方向）
+            date: 2025.09 - 2028.07
+          - title: 湖北美术学院
+            subtitle: 本科 · 影视动画学院（游戏互动方向）
+            date: 2020.09 - 2024.07
+            details:
+              - "主修课程：用户体验与可用性设计，人工智能艺术，游戏策划，AIGC艺术设计，虚拟漫游与交互，三维模型与制作，空间设计基础，美学原理。"
+      - id: internship
+        title: 实习经历
+        en: Internship
+        items:
+          - title: 腾讯 IEG · AI 3D 资产平台（在研 3DGS 产品）
+            subtitle: 产品策划
+            date: 2026.07 - 至今
+            details:
+              - "功能设计：跟进 3D 资产从上传、生成到编辑的全链路功能设计；独立负责“视角补全 + AI 补全”功能的方案、原型与落地，解决用户漏拍导致的模型残缺问题，缺陷率下降约 30%。"
+              - "资产工作流设计：研究 3D 生成资产进入真实生产管线的可用边界，建立判断标准，规划资产功能方向。"
+              - "竞品分析与视觉规范：调研 3D 生成、3D 编辑、程序化创作、3D 展示、资产管理类国内外竞品，输出功能对比分析与方向建议；制定产品视觉与美术规范，统一界面与素材标准，优化主页信息架构。"
+          - title: 珞珈实验室（湖北）元梦 3D 元宇宙平台
+            subtitle: 产品策划 / UIUX设计实习生
+            date: 2025.08 - 2026.02
+            details:
+              - "交互流程优化：参与“手机拍照一键生成 3D 模型”功能迭代。提出 3 项交互简化方案，缩减操作步骤 20%，提升新手模型生成成功率。"
+              - "竞品数据分析：深度拆解相关 3D 建模竞品，输出功能对比评估报告，为产品迭代方向提供数据支持。"
+              - "美术资产规范：负责产品迭代期的美术资产把控，统一 UI 视觉风格，确保视觉元素符合平台设计规范。"
+      - id: projects
+        title: 项目经历
+        en: Projects
+        items:
+          - title: 轻量化 3D 立体相册应用
+            subtitle: 产品负责人 / UIUX设计（0-1 独立开发）
+            date: 2025.03 - 2026.01
+            link: https://my.feishu.cn/wiki/T9xvwEvSzizjm9ksYlwcKvvNn9g
+            link_text: 产品实机演示 ↗
+            details:
+              - "项目介绍：一款打破传统 2D 空间局限，主打移动端流畅浏览的 3D 互动相册。"
+              - "确立以 3DGS 技术为核心驱动。利用 AI 前端技术栈独立完成页面搭建与 UI 逻辑编写，进行产品原型验证到前端交互实现的全流程。"
+              - "制定视觉交互规范，引入设计令牌（Design Tokens）与标准化组件（Components）确保视觉一致性。"
+              - "打通从痛点洞察、UI/UX 设计到前端代码落地的全链路，实现产品从概念到可交付演示版本的转化。"
+          - title: 《汪汪特工队》养成类游戏
+            subtitle: 项目负责人 / 主策划
+            date: 2024.01 - 2024.06
+            link: https://share.weiyun.com/sV2LvcUk?weiyun_qr_code=1
+            link_text: 演示视频 ↗
+            details:
+              - "项目介绍：一款融合“警犬题材”与“休闲养成”玩法的创新养成类游戏。"
+              - "主导产品从 0 到 1 的研发周期，撰写完整系统设计文档与核心数值规划。统筹管理 8 人跨专业团队（程序、美术、策划），确保开发排期精准推进。"
+              - "把控游戏美术风格与核心资源制作。参与引擎部署环节，统一整体视觉规范。"
+              - "完成最终 Demo 的交付与验收，成功斩获未来制作人大奖赛（武汉站）“最佳人气奖”。"
+      - id: awards
+        title: 获奖情况
+        en: Awards
+        items:
+          - title: 第十一届“理工合伙人”研究生创业挑战赛三等奖
+            date: 2025.10
+          - title: 未来制作人大奖赛“最佳人气奖”
+            date: 2024.05
+          - title: 《基于苗族传说“蝴蝶妈妈”的动力学首饰设计》于《优享生活》杂志发表
+            date: 2024.01
+      - id: gaming
+        title: 游戏经历
+        en: Gaming
+        items:
+          - details:
+              - "主流品类体验：长线重度游玩《原神》《崩坏：星穹铁道》《第五人格》等热门产品，熟悉二次元 RPG 与非对称竞技类游戏的核心玩法。"
+              - "MOBA 竞技：资深《英雄联盟》玩家，最高段位达到超凡大师，具备丰富的硬核实战经验。"
+      - id: skills
+        title: 相关技能
+        en: Skills
+        items:
+          - details:
+              - "产品原型设计：熟练使用 Figma、Axure 输出高保真原型，具备系统设计文档撰写与核心数值规划能力。"
+              - "美术视觉设计：熟练使用 Photoshop、Illustrator、Blender 等工具进行 UI 视觉设计与 3D 资产制作。"
+              - "前端技术：熟悉 HTML/CSS/JavaScript，掌握 AI 辅助编程代码落地。"
+      - id: campus
+        title: 校园经历
+        en: Campus
+        items:
+          - title: 艺奇游研社社长 | 湖北美术学院
+            date: 2022.02 - 2023.03
+            details:
+              - "跨校活动策划：联合武汉大学、华中科技大学等 4 所高校社团，举办“融艺”跨学科交流会及校内首届 Game Jam 比赛（超 300 人参与）。"
+              - "社团运营：优化社团分工与招新流程。任职期间社团核心成员规模增长 50%，共举办 3 场百人级社团活动。"
+
 home:
   hero:
-    label: Editorial Notes
-    title: Building a quiet, curated home for thoughtful work.
-    description: 一个面向设计、系统与知识沉淀的个人博客与内容档案。这里会逐步承载文章、实验与长期思考。
+    label: ""
+    title: 求职意向｜产品策划（3D / AI 方向）
+    description: 你好，我是陈嘉希，武汉理工大学的硕士，专注于 AIGC 与 3D 创作者工具的产品策划。
+    note: Bridging Technology & Human Experience.
+    note_secondary: 探索技术与体验的边界。
     cta_text: 阅读文章
     cta_link: /archives/
     image: /images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg

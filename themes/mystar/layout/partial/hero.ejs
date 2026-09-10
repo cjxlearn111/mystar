@@ -1,9 +1,9 @@
 <% const hero = theme.home && theme.home.hero ? theme.home.hero : {}; %>
 
-<section class="hero container-shell">
+<section id="intro" class="hero container-shell">
   <div class="hero-copy">
-    <p class="section-label"><%= hero.label || 'Editorial Notes' %></p>
-    <h1 class="hero-title">
+    <p class="section-label"><%= hero.note || hero.label || 'Editorial Notes' %></p>
+    <h1 class="hero-title hero-intent-title">
       <%= hero.title || 'Building a quiet, curated home for thoughtful work.' %>
     </h1>
     <p class="hero-description">
@@ -13,8 +13,7 @@
       <a class="primary-button" href="<%= url_for(hero.cta_link || '/archives/') %>"><%= hero.cta_text || '阅读文章' %></a>
     </div>
     <div class="hero-notes">
-      <p class="hero-note hero-note-primary"><%= theme.brand && theme.brand.description ? theme.brand.description : '关于设计、系统与长文阅读体验的个人知识档案。' %></p>
-      <p class="hero-note">Issue <%= theme.brand && theme.brand.issue ? theme.brand.issue : 'No.1' %></p>
+      <p class="hero-note hero-note-primary"><%= hero.note_secondary || '把复杂的生成能力，做成创作者顺手可用的工具。' %></p>
     </div>
   </div>
   <div class="hero-visual">
