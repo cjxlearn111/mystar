@@ -1057,11 +1057,12 @@ html, body { background:transparent !important; }
      ran long enough to sit right on top of the lede below it. Pulled up and
      down a size so the two blocks read as separate things. */
   .headline {
-    top: calc(170 * var(--u)) !important;
-    font-size: max(24px, calc(52 * var(--u))) !important;
-    line-height: 1.25 !important;
+    top: calc(165 * var(--u)) !important;
+    font-size: max(17px, calc(36 * var(--u))) !important;
+    line-height: 1.3 !important;
   }
   .lede {
+    width: calc(660 * var(--u)) !important;
     font-size: max(12.5px, calc(23 * var(--u))) !important;
     line-height: 1.6 !important;
   }
@@ -1076,6 +1077,16 @@ html, body { background:transparent !important; }
   .card h2 {
     font-size: max(15px, calc(34 * var(--u))) !important;
   }
+
+  /* The column below re-spaces with the copy: the lede wraps to two lines now
+     that its box is wider, and the headline is smaller, so the control and the
+     two readouts are re-cut rather than left to land on top of anything. */
+  .pill-clip { top: calc(545 * var(--u)) !important; }
+  .stat--a { top: calc(660 * var(--u)) !important; }
+  .stat--b { left: calc(34 * var(--u)) !important; top: calc(730 * var(--u)) !important; }
+  /* "Arrive" sat on the 702u rail, which on a 375px screen puts it past the
+     right edge; pulled onto the same left rail as the copy above it. */
+  .scroll { left: calc(600 * var(--u)) !important; }
 }
 
 /* ── wordmark ─────────────────────────────────────────────────────────── */
