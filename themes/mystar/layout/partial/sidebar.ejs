@@ -3,6 +3,21 @@
 
 <aside class="profile-sidebar">
   <div class="profile-sidebar-inner">
+    <% const wechat = profile.wechat || {}; %>
+    <% if (wechat.image) { %>
+      <input type="checkbox" id="wechat-popup-toggle" class="wechat-popup-toggle" aria-label="关闭微信二维码">
+      <%# arriving from the Kaya landing page with #wechat opens the popup,
+          then the hash is dropped so a refresh does not re-open it. %>
+      <script>
+        (function () {
+          if (window.location.hash !== '#wechat') return;
+          var box = document.getElementById('wechat-popup-toggle');
+          if (box) box.checked = true;
+          history.replaceState(null, '', window.location.pathname + window.location.search);
+        })();
+      </script>
+    <% } %>
+
     <div class="profile-identity">
       <% if (profile.avatar) { %>
         <img class="profile-avatar" src="<%= url_for(profile.avatar) %>" alt="<%= profile.name || 'Profile' %>" width="80" height="80">
@@ -23,6 +38,14 @@
     </nav>
 
     <div class="profile-contact">
+      <% if (wechat.image) { %>
+        <label class="profile-contact-wechat" for="wechat-popup-toggle">
+          <span class="profile-contact-label"><%= wechat.label || 'WeChat' %></span>
+          <span class="profile-contact-wechat-thumb">
+            <img src="<%= url_for(wechat.image) %>" alt="微信二维码" width="44" height="44" loading="lazy" decoding="async">
+          </span>
+        </label>
+      <% } %>
       <% if (profile.email) { %>
         <a href="mailto:<%= profile.email %>">
           <span class="profile-contact-label">Email</span>
@@ -44,5 +67,16 @@
     </div>
 
     <p class="profile-copyright">© <%= date(new Date(), 'YYYY') %> MYSTAR.</p>
+
+    <% if (wechat.image) { %>
+      <div class="wechat-popup" role="dialog" aria-modal="true" aria-label="微信联系方式">
+        <label class="wechat-popup-backdrop" for="wechat-popup-toggle" aria-label="关闭"></label>
+        <div class="wechat-popup-body">
+          <img src="<%= url_for(wechat.image) %>" alt="微信二维码" loading="lazy" decoding="async">
+          <p class="wechat-popup-caption"><%= wechat.caption || '扫码添加我为朋友。' %></p>
+          <label class="wechat-popup-close" for="wechat-popup-toggle">关闭</label>
+        </div>
+      </div>
+    <% } %>
   </div>
 </aside>
