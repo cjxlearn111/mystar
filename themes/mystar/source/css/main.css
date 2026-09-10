@@ -9,6 +9,7 @@
   --border-soft: rgba(0, 0, 0, 0.06);
   --border-strong: #c4c7c7;
   --brand-primary: #000000;
+  --link: #0078d4;
   --brand-on-primary: #ffffff;
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04);
   --shadow-floating: 0 12px 40px rgba(0, 0, 0, 0.05);
@@ -582,7 +583,7 @@ img {
 .resume-item-link {
   display: inline-block;
   margin-top: 14px;
-  color: var(--text-secondary);
+  color: var(--link);
   font-size: 13px;
   text-decoration: underline;
   text-underline-offset: 4px;
