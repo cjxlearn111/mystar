@@ -1047,6 +1047,29 @@ html, body { background:transparent !important; }
   .stat--b { left: calc(34 * var(--u)) !important; top: calc(690 * var(--u)) !important; }
 }
 
+/* ── mobile readability floor ────────────────────────────────────────────
+   The 760u frame shrinks the small copy to roughly 9px on a phone, which is
+   fine for a hotel brochure and useless for a page HR is meant to read. The
+   floor only bites at the narrow end; the box widths are left alone so none
+   of the absolutely-positioned elements below have to move. */
+@media (max-width: 900px) {
+  .lede {
+    font-size: max(12.5px, calc(23 * var(--u))) !important;
+    line-height: 1.6 !important;
+  }
+  .stat dt {
+    font-size: max(11.5px, calc(20 * var(--u))) !important;
+    line-height: 1.4 !important;
+  }
+  .stat dd {
+    font-size: max(12.5px, calc(21 * var(--u))) !important;
+    line-height: 1.4 !important;
+  }
+  .card h2 {
+    font-size: max(15px, calc(34 * var(--u))) !important;
+  }
+}
+
 /* ── wordmark ─────────────────────────────────────────────────────────── */
 /* it sits in .hero's box, not the stage's, so it holds the dock's line at any
    viewport height rather than drifting with the vertically-centred stage */
