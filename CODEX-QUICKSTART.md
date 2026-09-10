@@ -48,6 +48,21 @@ npm rebuild
 | `npm run publish:post -- "标题"` | 草稿转正式 |
 | `npm run editor` | 本地可视化编辑器（`tools/local-editor`） |
 
+### 简历 PDF（`source/files/resume.pdf`）
+
+首页「下载简历」按钮指向它。这个 PDF **不由 Hexo 生成**，是用脚本从外部简历打印出来的：
+
+```powershell
+python make-resume-pdf.py      # 或双击 make-resume-pdf.bat
+```
+
+脚本流程：用 Edge 无头模式量出简历的真实内容高度 → 写回该 HTML 的 `@page` 尺寸（内容 + 6mm，必要时自动加高重试，收敛到**单页长页**）→ 打印 PDF → 落到 `source/files/resume.pdf`。
+
+- ⚠️ 简历源文件在**仓库之外**（`个人资料库/求职/陈嘉希简历.html`）。改了它，PDF **不会自动更新**，必须重跑脚本。
+- 简历容器宽 820px（≈217mm），比 A4 的 210mm 宽，所以 `@page` 宽度写的是 220mm——这是它以前被切成 3 页的原因。
+- 生成后要 `git push` 才会发布到线上。
+- 依赖：本机 Microsoft Edge。
+
 ---
 
 ## 3. 文件地图（想改什么 → 改哪个文件）
