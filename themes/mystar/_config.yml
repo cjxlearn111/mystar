@@ -134,8 +134,15 @@ home:
     description: 你好，我是陈嘉希，武汉理工大学的硕士，专注于 AIGC 与 3D 创作者工具的产品策划。
     note: Bridging Technology & Human Experience.
     note_secondary: 探索技术与体验的边界。
-    cta_text: 阅读文章
-    cta_link: /archives/
+    cta_text: 浏览履历
+    cta_link: /home/#education
+    secondary:
+      - text: 下载简历
+        link: /files/resume.pdf
+        download: 陈嘉希-产品策划简历.pdf
+      - text: 浏览作品集 ↗
+        link: https://cjxlearn111.github.io/art-portfolio/
+        external: true
     image: /images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg
     image_alt: Homepage hero landscape
     card_label: In Progress

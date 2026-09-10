@@ -10,7 +10,10 @@
       <%= hero.description || '一个面向设计、系统与知识沉淀的个人博客与内容档案。这里会逐步承载文章、实验与长期思考。' %>
     </p>
     <div class="hero-actions">
-      <a class="primary-button" href="<%= url_for(hero.cta_link || '/archives/') %>"><%= hero.cta_text || '阅读文章' %></a>
+      <a class="primary-button" href="<%= url_for(hero.cta_link || '/archives/') %>"><%= hero.cta_text || '浏览履历' %></a>
+      <% (hero.secondary || []).forEach(function (item) { %>
+        <a class="secondary-button" href="<%= item.external ? item.link : url_for(item.link) %>"<% if (item.download) { %> download="<%= item.download %>"<% } %><% if (item.external) { %> target="_blank" rel="noreferrer"<% } %>><%= item.text %></a>
+      <% }); %>
     </div>
     <div class="hero-notes">
       <p class="hero-note hero-note-primary"><%= hero.note_secondary || '把复杂的生成能力，做成创作者顺手可用的工具。' %></p>
