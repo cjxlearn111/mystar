@@ -1053,6 +1053,14 @@ html, body { background:transparent !important; }
    floor only bites at the narrow end; the box widths are left alone so none
    of the absolutely-positioned elements below have to move. */
 @media (max-width: 900px) {
+  /* Two lines of Latin display type, scaled down hard: at the 760u frame it
+     ran long enough to sit right on top of the lede below it. Pulled up and
+     down a size so the two blocks read as separate things. */
+  .headline {
+    top: calc(170 * var(--u)) !important;
+    font-size: max(24px, calc(52 * var(--u))) !important;
+    line-height: 1.25 !important;
+  }
   .lede {
     font-size: max(12.5px, calc(23 * var(--u))) !important;
     line-height: 1.6 !important;
