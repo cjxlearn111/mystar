@@ -2,4 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><%= page.title ? page.title + ' | ' + config.title : config.title %></title>
 <meta name="description" content="<%= page.description || config.description %>">
-<link rel="stylesheet" href="<%= url_for('/css/main.css') %>">
+<%# 资源指纹：GitHub Pages 给 CSS 的缓存是 max-age=600（10 分钟）。
+    不加版本号时，改完样式访客最长要等十分钟才能看到新版本。
+    每次构建换一个时间戳，浏览器就会立刻取新文件。 %>
+<link rel="stylesheet" href="<%= url_for('/css/main.css') %>?v=<%= Date.now().toString(36) %>">
