@@ -1306,3 +1306,13 @@ img {
     font-size: 15px;
   }
 }
+
+/* ── Mobile skips the Kaya intro ──────────────────────────────────────────
+   Phones land straight on the resume (source/index.html redirects them), so
+   the Home link — which points back at the intro — would bounce right back.
+   Hide it at the same ≤900px breakpoint the resume layout already uses. */
+@media (max-width: 900px) {
+  .site-nav .nav-home {
+    display: none;
+  }
+}
