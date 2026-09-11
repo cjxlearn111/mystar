@@ -14,10 +14,12 @@ profile:
   wechat:
     label: WeChat
     image: /images/site/wechat-qr.jpg
-    caption: 扫二维码，添加我为朋友。
+    # caption 不配置时，小窗里那行提示文字不会输出
+    # caption: 扫二维码，添加我为朋友。
   email: 1621115862@qq.com
   phone: "17320536503"
-  portfolio: https://cjxlearn111.github.io/art-portfolio/
+  # 侧栏不再展示作品集入口，需要时再打开
+  # portfolio: https://cjxlearn111.github.io/art-portfolio/
   navigation:
     - label: 概览
       meta: Intro

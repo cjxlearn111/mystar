@@ -73,7 +73,10 @@
         <label class="wechat-popup-backdrop" for="wechat-popup-toggle" aria-label="关闭"></label>
         <div class="wechat-popup-body">
           <img src="<%= url_for(wechat.image) %>" alt="微信二维码" loading="lazy" decoding="async">
-          <p class="wechat-popup-caption"><%= wechat.caption || '扫码添加我为朋友。' %></p>
+          <%# 说明文字改为可选：_config.yml 里没配 caption 时整行不输出 %>
+          <% if (wechat.caption) { %>
+            <p class="wechat-popup-caption"><%= wechat.caption %></p>
+          <% } %>
           <label class="wechat-popup-close" for="wechat-popup-toggle">关闭</label>
         </div>
       </div>
