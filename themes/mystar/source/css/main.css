@@ -575,7 +575,7 @@ img {
 .resume-item-subtitle {
   margin: 8px 0 0;
   color: var(--text-primary);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 600;
 }
 
@@ -602,6 +602,13 @@ img {
   color: var(--text-secondary);
   font-size: 15px;
   line-height: 1.75;
+}
+
+/* "功能设计：""竞品分析：""项目介绍："这类条目前缀本身就是每条要点的
+   标题，加重之后 HR 只扫前缀就能抓住整条在讲什么。 */
+.resume-item-details .detail-lead {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 .about-shell {
@@ -1287,7 +1294,7 @@ img {
   }
 
   .resume-item-subtitle {
-    font-size: 19px;
+    font-size: 22px;
   }
 
   .resume-item time {

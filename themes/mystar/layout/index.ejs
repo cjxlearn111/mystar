@@ -34,7 +34,14 @@
               <% if (item.details) { %>
                 <ul class="resume-item-details">
                   <% item.details.forEach(function(detail){ %>
-                    <li><%= detail %></li>
+                    <%# 抽出"功能设计："这类条目前缀单独加重。前缀文字仍走
+                        转义输出，模板里硬编码的只有 <strong> 标签本身。 %>
+                    <% var lead = String(detail).match(/^([^：:]{2,12})[：:]/); %>
+                    <% if (lead) { %>
+                      <li><strong class="detail-lead"><%= lead[1] %>：</strong><%= String(detail).slice(lead[0].length) %></li>
+                    <% } else { %>
+                      <li><%= detail %></li>
+                    <% } %>
                   <% }); %>
                 </ul>
               <% } %>
