@@ -564,14 +564,19 @@ img {
   font-weight: 600;
 }
 
-.resume-item-subtitle,
 .resume-item time {
   color: var(--text-muted);
   font-size: 13px;
 }
 
+/* 副标题是"产品策划""硕士 · 艺术与设计学院（新媒体艺术方向）"这类职能与
+   学历关键词，HR 扫简历时最先落在这一行，所以比日期更重、更大、更深。
+   日期继续用浅灰小字，避免整块变重后失去层次。 */
 .resume-item-subtitle {
   margin: 8px 0 0;
+  color: var(--text-primary);
+  font-size: 15px;
+  font-weight: 600;
 }
 
 .resume-item time {
@@ -1281,7 +1286,10 @@ img {
     font-size: 20px;
   }
 
-  .resume-item-subtitle,
+  .resume-item-subtitle {
+    font-size: 19px;
+  }
+
   .resume-item time {
     font-size: 18px;
   }
