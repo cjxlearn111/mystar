@@ -474,10 +474,28 @@ img {
 }
 
 .hero-image {
+  position: relative;
   height: 100%;
   border-radius: var(--radius-xl);
   overflow: hidden;
   background: linear-gradient(160deg, #efedf5, #d6d2de);
+}
+
+/* 深度视差的画布盖在静态图上：脚本初始化成功才淡入，失败就保持透明，
+   用户看到的仍旧是下面那张 <img>。 */
+.hero-parallax-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 700ms ease;
+  pointer-events: none;
+}
+
+.hero-parallax-canvas.is-ready {
+  opacity: 1;
 }
 
 .hero-image img {

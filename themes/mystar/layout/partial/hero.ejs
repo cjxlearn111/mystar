@@ -22,6 +22,8 @@
   <div class="hero-visual">
     <div class="hero-image">
       <img src="<%= url_for(hero.image || '/images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg') %>" alt="<%= hero.image_alt || 'Homepage hero landscape' %>" loading="eager" fetchpriority="high" decoding="async" width="1600" height="1600">
+      <%# 深度视差的画布盖在静态图上，只有脚本初始化成功才会淡入 %>
+      <canvas class="hero-parallax-canvas" data-src="<%= url_for(hero.image || '/images/site/aaf9412a0256e7ffac1039eaa1fb2821.jpg') %>" aria-hidden="true"></canvas>
     </div>
     <div class="floating-card">
       <p class="floating-label"><%= hero.card_label || 'In Progress' %></p>
@@ -30,3 +32,8 @@
     </div>
   </div>
 </section>
+
+<%# 深度视差：three.js 复用 kaya 目录里已有的那一份，不额外引 CDN。
+    defer 保证两个脚本按顺序执行，parallax 里能拿到 window.THREE。 %>
+<script src="<%= url_for('/kaya/three.min.js') %>" defer></script>
+<script src="<%= url_for('/js/hero-parallax.js') %>" defer></script>
