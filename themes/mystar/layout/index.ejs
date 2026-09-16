@@ -70,10 +70,6 @@
       <a class="ghost-link" href="<%= url_for(latest.link || '/archives/') %>"><%= latest.link_text || '查看归档' %></a>
     </div>
 
-    <div class="post-list">
-      <% page.posts.each(function(post){ %>
-        <%- partial('partial/post-card', { post: post }) %>
-      <% }) %>
-    </div>
+    <%- partial('partial/post-list') %>
   </section>
 </section>

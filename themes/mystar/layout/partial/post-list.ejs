@@ -1,0 +1,22 @@
+<%
+  /* 文章列表：按字数从多到少排序。
+     字数口径与 post.ejs 保持一致：中文按字计，西文按词计。
+     字数相同则回退到日期倒序，避免排序不稳定。 */
+  var listPosts = page.posts.toArray().slice();
+  function countPostWords(post) {
+    var plainText = String(post.content || '').replace(/<[^>]*>/g, ' ');
+    var cnCount = (plainText.match(/[\u4E00-\u9FA5]/g) || []).length;
+    var enCount = (plainText.replace(/[\u4E00-\u9FA5]/g, ' ').match(/[a-zA-Z0-9_]+/g) || []).length;
+    return cnCount + enCount;
+  }
+  listPosts.sort(function(a, b) {
+    var diff = countPostWords(b) - countPostWords(a);
+    if (diff !== 0) return diff;
+    return b.date.valueOf() - a.date.valueOf();
+  });
+%>
+<div class="post-list">
+  <% listPosts.forEach(function(post){ %>
+    <%- partial('partial/post-card', { post: post }) %>
+  <% }); %>
+</div>

@@ -4,10 +4,6 @@
     <h1 class="page-title"><%= page.tag ? page.tag : '标签' %></h1>
   </header>
 
-  <div class="post-list">
-    <% page.posts.each(function(post){ %>
-      <%- partial('partial/post-card', { post: post }) %>
-    <% }) %>
-  </div>
+  <%- partial('partial/post-list') %>
 </section>
 
