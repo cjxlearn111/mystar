@@ -25,7 +25,7 @@ featured: false
 
 TripoSplat 由 TripoAI 开发，TripoAI 是中国 AI 3D 生成公司 VAST（主体为北京三启万物科技，也称哇嘶嗒科技）旗下的研究团队。VAST 成立于 2023 年，创始人宋亚宸，核心方向是通用 3D 大模型研发与 3D 内容创作工具。
 
-VAST 的核心产品 Tripo Studio 是一款一站式 AI 3D 工作台，支持通过文本或图片生成 3D 模型，主要面向创作者、设计师和开发者。据公开报道，截至 2026 年 9 月，Tripo Studio 已积累数千万全球创作者，VAST 完成了约 30 亿元人民币的 B 轮及 B+ 轮融资。
+VAST 的核心产品 [Tripo Studio](https://www.tripo3d.ai/) 是一款一站式 AI 3D 工作台，支持通过文本或图片生成 3D 模型，主要面向创作者、设计师和开发者。据公开报道，截至 2026 年 9 月，Tripo Studio 已积累数千万全球创作者，VAST 完成了约 30 亿元人民币的 B 轮及 B+ 轮融资。
 
 ### 2.2 核心产品与理念
 
@@ -35,15 +35,15 @@ Tripo Studio 的核心输出是传统 3D 网格（mesh），适合需要拓扑�
 
 ### 2.3 开源事件
 
-2026 年 6 月，VAST-AI-Research 在 GitHub 开源 TripoSplat，代码与模型权重采用 MIT License。官方描述为：将单张 2D 图片转换为高质量、数量可变的 3D Gaussians。
+2026 年 6 月，VAST-AI-Research 在 [GitHub](https://github.com/VAST-AI-Research/TripoSplat) 开源 TripoSplat，代码与模型权重采用 MIT License。官方描述为：将单张 2D 图片转换为高质量、数量可变的 3D Gaussians。
 
-开源内容包含推理代码和预训练权重，社区可以在本地或 Hugging Face 上直接运行。TripoSplat 与 Tripo Studio 的关系可以概括为：同一公司在不同 3D 表示上的布局。Tripo Studio 覆盖传统 mesh 工作流，TripoSplat 覆盖 3DGS 工作流，两者分别对应不同的下游应用场景和平台集成需求。
+开源内容包含推理代码和预训练权重，社区可以在本地或 [Hugging Face](https://huggingface.co/spaces/VAST-AI/TripoSplat) 上直接运行。TripoSplat 与 Tripo Studio 的关系可以概括为：同一公司在不同 3D 表示上的布局。Tripo Studio 覆盖传统 mesh 工作流，TripoSplat 覆盖 3DGS 工作流，两者分别对应不同的下游应用场景和平台集成需求。
 
 ## 3. 时间线：3DGS 的里程碑
 
 3D Gaussian Splatting 自 2023 年出现以来，经历了从学术研究到商业应用的快速迭代。以下为关键节点。
 
-**2023 年 8 月**：法国 INRIA 等机构发布论文《3D Gaussian Splatting for Real-Time Radiance Field Rendering》，提出用 3D 高斯点替代神经辐射场（NeRF），实现实时辐射场渲染。相比 NeRF，3DGS 在训练速度、渲染帧率和显存占用上具有明显优势。
+**2023 年 8 月**：法国 INRIA 等机构发布论文[《3D Gaussian Splatting for Real-Time Radiance Field Rendering》](https://arxiv.org/abs/2308.04079)，提出用 3D 高斯点替代神经辐射场（NeRF），实现实时辐射场渲染。相比 NeRF，3DGS 在训练速度、渲染帧率和显存占用上具有明显优势。
 
 **2023 至 2024 年**：学术界围绕 3DGS 展开大量研究，方向包括高斯点压缩、可编辑 3DGS、动态场景 3DGS、物理属性融合等。这一时期，3DGS 主要应用于从多视图图像重建静态场景，输入数据仍依赖结构光、多视角拍摄或运动恢复结构（SfM）产生的位姿信息。
 
@@ -68,7 +68,7 @@ Tripo Studio 的核心输出是传统 3D 网格（mesh），适合需要拓扑�
 | 项目 | 建议配置 |
 |---|---|
 | 本地运行 | NVIDIA RTX 4090 / 3090，CUDA 11.8 以上，Python 3.10 |
-| 在线 Demo | Hugging Face Space：VAST-AI-Research/TripoSplat |
+| 在线 Demo | [Hugging Face Space](https://huggingface.co/spaces/VAST-AI/TripoSplat) |
 | 输出格式 | .ply 或 .splat |
 | 查看工具 | SplatViz、Three.js viewer、Blender 3DGS 插件 |
 
