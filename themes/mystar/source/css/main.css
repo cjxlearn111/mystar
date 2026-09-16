@@ -898,9 +898,9 @@ img {
 @media (min-width: 1440px) {
   .article-layout {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 190px;
-    gap: 48px;
-    width: min(calc(100% - 40px), 1100px);
+    grid-template-columns: minmax(0, 1fr) 236px;
+    gap: 56px;
+    width: min(calc(100% - 40px), 1180px);
     align-items: start;
   }
 
@@ -910,13 +910,18 @@ img {
     top: 120px;
     max-height: calc(100vh - 200px);
     overflow-y: auto;
-    padding: 48px 0 0 20px;
-    border-left: 1px solid var(--border-soft);
+    padding: 48px 0 16px;
+    scrollbar-width: thin;
+  }
+
+  .article-toc.has-more {
+    -webkit-mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
+    mask-image: linear-gradient(to bottom, #000 calc(100% - 28px), transparent);
   }
 }
 
 .article-toc-label {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   color: var(--text-muted);
   font-size: 10px;
   font-weight: 600;
@@ -930,25 +935,60 @@ img {
   list-style: none;
 }
 
-.article-toc .toc-child {
-  padding-left: 12px;
+.article-toc li {
+  margin: 0;
 }
 
 .article-toc a {
   display: block;
-  padding: 5px 0;
   color: var(--text-muted);
   font-size: 13px;
-  line-height: 1.5;
-  transition: color 180ms ease;
+  line-height: 1.45;
+  transition: color 180ms ease, border-color 180ms ease;
 }
 
 .article-toc a:hover {
   color: var(--brand-primary);
 }
 
+/* 章：常态条目，左侧竖线指示当前所在章节 */
+.article-toc .toc-level-2 > a {
+  padding: 8px 0 8px 12px;
+  border-left: 2px solid transparent;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.article-toc .toc-level-2 + .toc-level-2 {
+  margin-top: 2px;
+}
+
+.article-toc .toc-level-2 > a.is-active {
+  border-left-color: var(--brand-primary);
+  color: var(--brand-primary);
+  font-weight: 600;
+}
+
+/* 小节：缩进与弱化，与章的层级拉开 */
+.article-toc .toc-child {
+  margin: 2px 0 10px;
+  padding-left: 12px;
+}
+
 .article-toc .toc-level-3 a {
+  padding: 5px 0 5px 10px;
+  color: var(--text-muted);
   font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* 折叠仅在脚本接管后生效，无脚本时目录保持完整 */
+.article-toc .toc-js-ready .toc-level-2 > .toc-child {
+  display: none;
+}
+
+.article-toc .toc-js-ready .toc-level-2.is-open > .toc-child {
+  display: block;
 }
 
 .back-link {

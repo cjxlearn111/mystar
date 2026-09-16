@@ -31,4 +31,7 @@
   <p class="article-toc-label">目录</p>
   <%- toc(page.content, { list_number: false, max_depth: 3 }) %>
 </aside>
+
+<%# 目录交互：滚动时展开并高亮当前章，脚本接管前目录保持完整显示 %>
+<script src="<%= url_for('/js/article-toc.js') %>" defer></script>
 </div>
