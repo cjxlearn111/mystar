@@ -2,12 +2,24 @@
 <article class="article-shell">
   <a class="back-link" href="<%= url_for('/archives/') %>">返回文章列表</a>
 
+  <%# 字数统计：中文按字计，西文按词计，与 hexo-wordcount 口径一致 %>
+  <%
+    var plainText = String(page.content || '').replace(/<[^>]*>/g, ' ');
+    var cnCount = (plainText.match(/[\u4E00-\u9FA5]/g) || []).length;
+    var enCount = (plainText.replace(/[\u4E00-\u9FA5]/g, ' ').match(/[a-zA-Z0-9_]+/g) || []).length;
+    var wordTotal = cnCount + enCount;
+  %>
+
   <header class="article-header">
     <div class="article-meta">
       <time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY年MM月DD日') %></time>
       <% if (page.reading_time) { %>
         <span class="meta-separator">•</span>
         <span><%= page.reading_time %></span>
+      <% } %>
+      <% if (wordTotal > 0) { %>
+        <span class="meta-separator">•</span>
+        <span><%= wordTotal.toLocaleString('en-US') %> 字</span>
       <% } %>
     </div>
     <h1 class="article-title"><%= page.title %></h1>
