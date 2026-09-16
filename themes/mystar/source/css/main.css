@@ -980,6 +980,41 @@ img {
   background: var(--bg-surface-muted);
 }
 
+.article-prose table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: 0 0 28px;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-overflow-scrolling: touch;
+}
+
+.article-prose th,
+.article-prose td {
+  padding: 10px 14px;
+  border: 1px solid var(--border-soft);
+  text-align: left;
+  vertical-align: top;
+}
+
+.article-prose th {
+  background: var(--bg-surface-muted);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+.article-prose td {
+  color: var(--text-secondary);
+}
+
+.article-prose tr:nth-child(even) td {
+  background: var(--bg-surface-muted);
+}
+
 .site-footer {
   margin-top: 96px;
   border-top: 1px solid var(--border-soft);
