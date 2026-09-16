@@ -881,9 +881,74 @@ img {
   transition: color 180ms ease;
 }
 
+.article-layout {
+  width: min(calc(100% - 40px), 860px);
+  margin: 0 auto;
+}
+
 .article-shell {
-  max-width: 860px;
+  min-width: 0;
   padding-top: 48px;
+}
+
+.article-toc {
+  display: none;
+}
+
+@media (min-width: 1440px) {
+  .article-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 190px;
+    gap: 48px;
+    width: min(calc(100% - 40px), 1100px);
+    align-items: start;
+  }
+
+  .article-toc {
+    display: block;
+    position: sticky;
+    top: 120px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding: 48px 0 0 20px;
+    border-left: 1px solid var(--border-soft);
+  }
+}
+
+.article-toc-label {
+  margin: 0 0 14px;
+  color: var(--text-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.article-toc ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article-toc .toc-child {
+  padding-left: 12px;
+}
+
+.article-toc a {
+  display: block;
+  padding: 5px 0;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+  transition: color 180ms ease;
+}
+
+.article-toc a:hover {
+  color: var(--brand-primary);
+}
+
+.article-toc .toc-level-3 a {
+  font-size: 12.5px;
 }
 
 .back-link {
@@ -946,6 +1011,7 @@ img {
 
 .article-prose h2,
 .article-prose h3 {
+  scroll-margin-top: 104px;
   font-family: var(--font-display);
   color: var(--text-primary);
 }

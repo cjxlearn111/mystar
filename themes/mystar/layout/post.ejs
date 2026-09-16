@@ -1,4 +1,5 @@
-<article class="article-shell container-reading">
+<div class="article-layout">
+<article class="article-shell">
   <a class="back-link" href="/archives/">返回文章列表</a>
 
   <header class="article-header">
@@ -25,3 +26,9 @@
     <%- page.content %>
   </div>
 </article>
+
+<aside class="article-toc">
+  <p class="article-toc-label">目录</p>
+  <%- toc(page.content, { list_number: false, max_depth: 3 }) %>
+</aside>
+</div>
