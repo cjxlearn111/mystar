@@ -1134,6 +1134,28 @@ img {
   background: var(--bg-surface-muted);
 }
 
+.article-figure {
+  margin: 0 0 36px;
+}
+
+.article-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-soft);
+  background: var(--bg-surface-muted);
+}
+
+.article-figure figcaption {
+  margin-top: 10px;
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
 .site-footer {
   margin-top: 96px;
   border-top: 1px solid var(--border-soft);
