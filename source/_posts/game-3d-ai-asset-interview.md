@@ -41,7 +41,7 @@ featured: false
 
 因此，现在 AI 资产的使用方式更像是**先由 AI 出几个版本，再由从业者挑选，修改到能进引擎**。如果修的成本太高，使用者宁可不用。
 
-<figure class="article-figure"><img src="/mystar/images/posts/interview/interview-asset-01.jpg" alt="相关资产处理图片" loading="lazy" decoding="async"><figcaption>相关资产处理图片</figcaption></figure>
+<figure class="article-figure"><img src="/mystar/images/posts/interview/interview-asset-03.jpg" alt="相关资产处理图片" loading="lazy" decoding="async"><figcaption>相关资产处理图片</figcaption></figure>
 
 ## 三、资产分层：什么适合 AI，什么不适合
 
@@ -73,7 +73,7 @@ TA 受访者给出的工具清单更细：
 
 两人在工具评价上有重合也有差异。建模受访者认为 Meshy 的优势是**一站式**，TA 则认为 Meshy 质量到不了顶级。这种差异本身说明了工具没有绝对好坏，只有环节适配。
 
-<figure class="article-figure"><img src="/mystar/images/posts/interview/interview-asset-03.jpg" alt="相关资产处理图片" loading="lazy" decoding="async"><figcaption>相关资产处理图片</figcaption></figure>
+<figure class="article-figure"><img src="/mystar/images/posts/interview/interview-asset-01.jpg" alt="相关资产处理图片" loading="lazy" decoding="async"><figcaption>相关资产处理图片</figcaption></figure>
 
 ## 五、付费意愿与实际关注点
 
