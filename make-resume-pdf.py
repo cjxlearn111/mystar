@@ -36,7 +36,7 @@ EDGE_PATHS = [
 
 RESUME_DEFAULT = os.path.join("..", "求职", "陈嘉希简历.html")
 OUT_PDF = os.path.join("source", "files", "resume.pdf")
-PAGE_W_MM = 285          # 页面宽：加宽后内容横向铺开，整张图变矮、缩放比更大更清晰
+PAGE_W_MM = 210          # 页面宽 = A4 标准宽度，与原有排版对齐
 SAFETY_MM = 3            # 内容底边之上的余量（原来 6mm，页面底部显得太空）
 RETRY_STEP_MM = 10       # 若一轮下来仍不是单页，每轮加这么多
 MAX_TRY = 3
