@@ -12,7 +12,11 @@
     <div class="hero-actions">
       <a class="primary-button" href="<%= url_for(hero.cta_link || '/archives/') %>"><%= hero.cta_text || '浏览履历' %></a>
       <% (hero.secondary || []).forEach(function (item) { %>
-        <a class="secondary-button" href="<%= item.external ? item.link : url_for(item.link) %>"<% if (item.download) { %> download="<%= item.download %>"<% } %><% if (item.external) { %> target="_blank" rel="noreferrer"<% } %>><%= item.text %></a>
+        <%# 下载类按钮（简历 PDF）挂一个每次构建都变的时间戳：文件路径固定时
+            浏览器会一直用缓存里的旧版，重打了也拿不到新的。 %>
+        <% var btnHref = item.external ? item.link : url_for(item.link); %>
+        <% if (item.download) { btnHref += '?v=' + Date.now().toString(36); } %>
+        <a class="secondary-button" href="<%= btnHref %>"<% if (item.download) { %> download="<%= item.download %>"<% } %><% if (item.external) { %> target="_blank" rel="noreferrer"<% } %>><%= item.text %></a>
       <% }); %>
     </div>
     <div class="hero-notes">
