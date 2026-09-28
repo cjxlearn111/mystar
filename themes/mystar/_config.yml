@@ -32,7 +32,7 @@ profile:
       href: /home/#projects
     - label: 获奖情况
       href: /home/#awards
-    - label: 相关技能
+    - label: 专业技能
       href: /home/#skills
     - label: 校园经历
       href: /home/#campus
@@ -56,11 +56,11 @@ profile:
         title: 实习经历
         en: Internship
         items:
-          - title: 腾讯 IEG · AI 3D 资产平台（在研 3DGS 产品）
+          - title: 腾讯 · AI 3D 资产平台（在研 3DGS 产品）
             subtitle: 产品策划
             date: 2026.07 - 至今
             details:
-              - "功能设计：跟进 3D 资产从上传、生成到编辑的全链路功能设计；独立负责“视角补全 + AI 补全”功能的方案、原型与落地，解决用户漏拍导致的模型残缺问题，缺陷率下降约 30%。"
+              - "功能设计：跟进 3D 资产从上传、生成到编辑的全链路功能设计；独立负责“视角补全 + AI 补全”功能的方案、原型与落地，解决用户漏拍导致的模型残缺问题，缺陷率下降约 30%。为打通 3DGS 的宣发流程，切实降低 3D 资产后续的处理门槛与操作难度，独立设计了一套涵盖“3D资产处理-自动分镜-添加文案-添加音乐-视频宣传”的 3DGS + Agent 流程节点处理器功能。"
               - "资产工作流设计：研究 3D 生成资产进入真实生产管线的可用边界，建立判断标准，规划资产功能方向。"
               - "竞品分析与视觉规范：调研 3D 生成、3D 编辑、程序化创作、3D 展示、资产管理类国内外竞品，输出功能对比分析与方向建议；制定产品视觉与美术规范，统一界面与素材标准，优化主页信息架构。"
           - title: 珞珈实验室（湖北）元梦 3D 元宇宙平台
@@ -114,13 +114,14 @@ profile:
               - "主流品类体验：长线重度游玩《原神》《崩坏：星穹铁道》《第五人格》等热门产品，熟悉二次元 RPG 与非对称竞技类游戏的核心玩法。"
               - "MOBA 竞技：资深《英雄联盟》玩家，最高段位达到超凡大师，具备丰富的硬核实战经验。"
       - id: skills
-        title: 相关技能
+        title: 专业技能
         en: Skills
         items:
           - details:
-              - "产品原型设计：熟练使用 Figma、Axure 输出高保真原型，具备系统设计文档撰写与核心数值规划能力。"
+              - "产品功能设计：熟练使用 Figma、Axure ，具备扎实的交互设计思维，拥有系统设计文档撰写与核心数值规划能力，能独立完成用户流程图（User Flow）、线框图（Wireframe）及高保真可交互原型的设计与交付。"
               - "美术视觉设计：熟练使用 Photoshop、Illustrator、Blender 等工具进行 UI 视觉设计与 3D 资产制作。"
               - "前端技术：熟悉 HTML/CSS/JavaScript，掌握 AI 辅助编程代码落地。"
+              - "AI工具：codex、cursor、gpt、gemini、workbuddy深度体验用户；实习期间使用codebuddy进行功能设计及产品调研，累积消耗token过百亿"
       - id: campus
         title: 校园经历
         en: Campus
