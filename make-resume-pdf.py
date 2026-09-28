@@ -7,13 +7,14 @@
 或双击：
     make-resume-pdf.bat
 
-它做两件事：
+它做四件事：
   1. 找到简历 HTML（默认 ../求职/陈嘉希简历.html）
-  2. 用 Edge 无头模式打印成 PDF → source/files/resume.pdf
+  2. 用 Edge 无头模式量出内容的真实渲染高度
+  3. 把高度写回简历 HTML 的 @page 尺寸（内容 + 余量，自动收敛到单页）
+  4. 打印成单页长页 PDF → source/files/resume.pdf
 
-页面尺寸由简历 HTML 自己的 @media print / @page 决定，现在是标准 A4 分页。
-（早期版本是 220mm × 568mm 单张长页，宽度接近 1:2.6，阅读器一缩放就看不清，
-所以改回了 A4。）
+为什么不是 A4 分页：A4 会切成几页，每页底部留一大段空白（最后一页尤其明显），
+而这份简历的内容量正好适合一张排满的长页。
 
 前置条件：本机装有 Microsoft Edge。改完 PDF 记得 git push 才会发布。
 """
@@ -156,15 +157,26 @@ def main():
     print("简历文件 :", resume)
     print("浏览器   :", edge)
 
-    pdf_abs = os.path.abspath(OUT_PDF)
-    print_pdf(edge, resume, pdf_abs)
+    height_px = measure_height(edge, resume)
+    base_mm = height_px * 25.4 / 96
+    print("内容高度 : %d px = %.1f mm" % (height_px, base_mm))
 
-    pages, detail = inspect(pdf_abs)
-    print("页数     : %d  %s" % (pages, detail))
-    print("完成：PDF %.1f KB" % (os.path.getsize(pdf_abs) / 1024))
-    print("输出：", OUT_PDF)
-    print("记得 git push 才会发布到线上。")
-    return 0
+    pdf_abs = os.path.abspath(OUT_PDF)
+    for attempt in range(MAX_TRY):
+        page_mm = round(base_mm) + SAFETY_MM + attempt * RETRY_STEP_MM
+        set_page_height(resume, page_mm)
+        print("第 %d 次：页面高 %dmm（余量 %dmm）…" % (attempt + 1, page_mm, page_mm - round(base_mm)))
+        print_pdf(edge, resume, pdf_abs)
+        pages, detail = inspect(pdf_abs)
+        print("         → %d 页  %s" % (pages, detail))
+        if pages == 1:
+            print("完成：单页 PDF %.1f KB" % (os.path.getsize(pdf_abs) / 1024))
+            print("输出：", OUT_PDF)
+            print("记得 git push 才会发布到线上。")
+            return 0
+
+    print("三轮都没收敛到单页，请检查简历内容是否异常变长。")
+    return 1
 
 
 if __name__ == "__main__":
