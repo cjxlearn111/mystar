@@ -37,7 +37,7 @@ EDGE_PATHS = [
 RESUME_DEFAULT = os.path.join("..", "求职", "陈嘉希简历.html")
 OUT_PDF = os.path.join("source", "files", "resume.pdf")
 PAGE_W_MM = 220          # 页面宽：简历容器 820px ≈ 217mm，必须比 A4 的 210 宽
-SAFETY_MM = 6            # 内容高度之上的余量
+SAFETY_MM = 3            # 内容底边之上的余量（原来 6mm，页面底部显得太空）
 RETRY_STEP_MM = 10       # 若一轮下来仍不是单页，每轮加这么多
 MAX_TRY = 3
 
@@ -60,7 +60,11 @@ def find_resume():
 
 
 def measure_height(edge, resume_path):
-    """用 Edge 加载简历、由 JS 读出容器真实高度（px）。"""
+    """用 Edge 加载简历，由 JS 读出「从容器顶边到最后一个可见元素底边」的距离。
+
+    这里刻意不用 container.offsetHeight：容器底部还带着自己的 padding 和尾部
+    元素的 margin，直接量总高度会让页面最下方多出一大段空白（实测约 80px）。
+    """
     tmp = os.path.abspath("_resume_measure_tmp.html")
     uri = "file:///" + quote(os.path.abspath(resume_path).replace("\\", "/"))
     with open(tmp, "w", encoding="utf-8") as f:
@@ -73,7 +77,21 @@ window.addEventListener('load', function () {
   setTimeout(function () {
     try {
       var d = document.getElementById('f').contentDocument;
-      document.title = 'H_' + d.querySelector('.container').offsetHeight;
+      var c = d.querySelector('.container');
+      var cTop = c.getBoundingClientRect().top;
+      var bottom = 0;
+      var kids = c.children;
+      for (var i = 0; i < kids.length; i++) {
+        var r = kids[i].getBoundingClientRect();
+        if (r.height > 0 && r.bottom > bottom) bottom = r.bottom;
+      }
+      var used = bottom - cTop;
+      /* 兜底：万一没量到（元素全折叠等异常），退回容器高度减底部内边距 */
+      if (!used || used < 100) {
+        var padBottom = parseFloat(d.defaultView.getComputedStyle(c).paddingBottom) || 0;
+        used = c.offsetHeight - padBottom;
+      }
+      document.title = 'H_' + Math.ceil(used);
     } catch (e) { document.title = 'ERR_' + e.message; }
   }, 800);
 });
